@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BM_CardSlotBehaviour : MonoBehaviour
 {
-    [SerializeField] private float pulseTime = 1.0f;
+    [SerializeField] private float pulseSpeed = 1.0f;
     private BettingMachineBehaviour bm;
     private Light cardLight;
     private float maxLightIntensity, pulseChange;
@@ -15,15 +15,19 @@ public class BM_CardSlotBehaviour : MonoBehaviour
         cardLight = GetComponent<Light>();
 
         maxLightIntensity = cardLight.intensity;
-        pulseChange = maxLightIntensity / pulseTime;
         cardLight.intensity = 0.0f;
+        pulseChange = -1.0f;
     }
-
-    float pulseTimer = 0.0f;
+    
     private void Update()
     {
         if (!bm.insertedCard)
-            Pulse(Time.deltaTime);
+        {
+            cardLight.intensity += Time.deltaTime * pulseSpeed * pulseChange;
+
+            if (cardLight.intensity > maxLightIntensity || cardLight.intensity <= 0.0f)
+                pulseChange *= -1.0f;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,8 +48,7 @@ public class BM_CardSlotBehaviour : MonoBehaviour
         cb.transform.position = transform.position;
         cb.transform.rotation = transform.rotation;
         cb.GetComponent<Rigidbody>().isKinematic = true;
-
-        pulseTimer = 0.0f;
+        
         cardLight.intensity = maxLightIntensity;
         if (pulseChange > 0)
             pulseChange *= -1.0f;
@@ -59,17 +62,5 @@ public class BM_CardSlotBehaviour : MonoBehaviour
         bm.insertedCard.GetComponent<Rigidbody>().isKinematic = false;
         bm.insertedCard = null;
         bm.ToggleOn();
-    }
-
-    private void Pulse(float deltaTime)
-    {
-        pulseTimer += deltaTime;
-        cardLight.intensity += pulseChange * deltaTime;
-
-        if (pulseTimer > pulseTime)
-        {
-            pulseTimer = 0.0f;
-            pulseChange *= -1.0f;
-        }
     }
 }
