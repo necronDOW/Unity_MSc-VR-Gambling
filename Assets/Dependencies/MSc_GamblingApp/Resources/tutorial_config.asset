@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d306417b3dfd14ca3acc51e249e3aa, type: 3}
+  m_Name: tutorial_config
+  m_EditorClassIdentifier: 
+  intervention: 1
+  interventionSceneIndex: 1
+  interventionTransition: 0
+  cardSceneInterventionTurn: 10
+  cardSceneDealSpeed: 1
+  cardSceneOrderFile: {fileID: 4900000, guid: 0c40b17f9c4da5e4d96a53a636e774c3, type: 3}
+  diceSceneMaxReactionTime: 1.5
+  diceSceneStopSignalTurns: 0300000006000000
+  diceSceneOrderFile: {fileID: 4900000, guid: 1b86a795f153cec4e8f81f4794435fcc, type: 3}
+  freezeSceneTime: 9

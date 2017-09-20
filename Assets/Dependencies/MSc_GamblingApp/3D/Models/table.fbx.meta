@@ -1,0 +1,140 @@
+fileFormatVersion: 2
+guid: 91301b2436a80984f8ec1742165aacef
+timeCreated: 1497425577
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Camera
+    100004: Lamp
+    100006: Table
+    100008: Table-Border
+    100010: Table-Top
+    100012: Card-Bottom
+    100014: Card-Top
+    100016: Coin
+    100018: Deck
+    100020: Dice
+    100022: Table_rim
+    100024: Table_top
+    100026: Table_edge
+    400000: //RootNode
+    400002: Camera
+    400004: Lamp
+    400006: Table
+    400008: Table-Border
+    400010: Table-Top
+    400012: Card-Bottom
+    400014: Card-Top
+    400016: Coin
+    400018: Deck
+    400020: Dice
+    400022: Table_rim
+    400024: Table_top
+    400026: Table_edge
+    2300000: //RootNode
+    2300002: Table
+    2300004: Table-Border
+    2300006: Table-Top
+    2300008: Card-Bottom
+    2300010: Card-Top
+    2300012: Coin
+    2300014: Deck
+    2300016: Dice
+    2300018: Table_rim
+    2300020: Table_top
+    2300022: Table_edge
+    3300000: //RootNode
+    3300002: Table
+    3300004: Table-Border
+    3300006: Table-Top
+    3300008: Card-Bottom
+    3300010: Card-Top
+    3300012: Coin
+    3300014: Deck
+    3300016: Dice
+    3300018: Table_rim
+    3300020: Table_top
+    3300022: Table_edge
+    4300000: Table
+    4300002: Table-Top
+    4300004: Table-Border
+    4300006: Table_rim
+    4300008: Dice
+    4300010: Coin
+    4300012: Card-Top
+    4300014: Card-Bottom
+    4300016: Table_top
+    4300018: Deck
+    4300020: Table_edge
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

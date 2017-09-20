@@ -108,6 +108,47 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &88620675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 88620677}
+  - component: {fileID: 88620676}
+  m_Layer: 0
+  m_Name: Minigame Mngr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &88620676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88620675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda7a11e2f0eba64b818b33c01dac46c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetOnLoad: 1000
+--- !u!4 &88620677
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 88620675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.100954294, y: 0.94021845, z: -0.1646403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &923634010
 Prefab:
   m_ObjectHideFlags: 0
@@ -145,7 +186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4953041483841804, guid: 9e350a43f4f64c148a33ffa771f902b8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114253338360219676, guid: 9e350a43f4f64c148a33ffa771f902b8,
         type: 2}
@@ -161,6 +202,11 @@ Prefab:
         type: 2}
       propertyPath: pulseSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 108238907261750636, guid: 9e350a43f4f64c148a33ffa771f902b8,
+        type: 2}
+      propertyPath: m_BounceIntensity
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e350a43f4f64c148a33ffa771f902b8, type: 2}
@@ -228,7 +274,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1061404703
 GameObject:
@@ -317,7 +363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 37.99, y: 180, z: 0}
 --- !u!1 &1440301898
 GameObject:
@@ -401,7 +447,7 @@ Transform:
   m_LocalScale: {x: 0.03, y: 0.001, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1440301903
 MonoBehaviour:
