@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class BettingMachineBehaviour : MonoBehaviour
 {
@@ -38,8 +40,7 @@ public class BettingMachineBehaviour : MonoBehaviour
 
     private void OnValidate()
     {
-        if (feeds.Length != screens.Length)
-        {
+        if (feeds.Length != screens.Length) {
             Camera[] feedsTemp = feeds;
 
             feeds = new Camera[screens.Length];
@@ -53,8 +54,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         if (!feed)
             return;
 
-        if (screenIndex >= 0 && screenIndex < screens.Length)
-        {
+        if (screenIndex >= 0 && screenIndex < screens.Length) {
             feeds[screenIndex] = feed;
             feed.targetTexture = screenTextures[screenIndex];
         }
@@ -67,5 +67,52 @@ public class BettingMachineBehaviour : MonoBehaviour
         if (isOn)
             minigameMngr.LoadMinigame(machineIndex, "gambling_3d");
         else minigameMngr.UnloadMinigame(machineIndex);
+    }
+
+    public void ProjectToScreen(Vector3 hitPoint, GameObject screen)
+    {
+        int impactScreen = -1;
+        for (int i = 0; i < screens.Length; i++)
+        {
+            if (screen == screens[i])
+                impactScreen = i;
+        }
+
+        if (impactScreen == -1)
+            return;
+
+        BoxCollider bc = screens[impactScreen].GetComponent<BoxCollider>();
+        Vector3 pt1 = Vector3.right * bc.size.x * 0.5f;
+        Vector3 pt2 = Vector3.forward * bc.size.z * 0.5f;
+        Vector3 pt = pt1 + pt2;
+
+        hitPoint = bc.transform.InverseTransformPoint(hitPoint);
+        hitPoint += pt;
+        pt *= 2.0f;
+
+        float x = 1.0f - hitPoint.x / pt.x;
+        float y = 1.0f - hitPoint.z / pt.z;
+        Vector3 feedPixelPoint = new Vector3(feeds[impactScreen].pixelWidth * x, feeds[impactScreen].pixelHeight * y);
+
+        GameObject[] objects = Raycast(feeds[impactScreen], feedPixelPoint);
+        for (int i = 0; i < objects.Length; i++)
+            Debug.Log(objects[i].name);
+    }
+
+    public GameObject[] Raycast(Camera camera, Vector3 pointerPosition)
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = pointerPosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+        List<GameObject> output = results.Select(x => x.gameObject).ToList();
+
+        RaycastHit info;
+        Ray ray = camera.ScreenPointToRay(pointerPosition);
+        if (Physics.Raycast(ray, out info, 100.0f))
+            output.Add(info.collider.gameObject);
+
+        return output.ToArray();
     }
 }
