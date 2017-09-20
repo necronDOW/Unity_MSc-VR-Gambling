@@ -29,10 +29,10 @@ public class SceneMngr : MonoBehaviour
         Instant
     }
 
+    public Camera mainCamera;
     public int firstScene = 0;
     public InternalScene[] scenes;
-    
-    private Camera mainCamera;
+
     private float switchTime = 0.0f;
     private int nextIndex = -1;
     private TransitionMode nextTransition;
@@ -54,8 +54,6 @@ public class SceneMngr : MonoBehaviour
 
     private void Awake()
     {
-        mainCamera = Camera.main;
-
         if (firstScene < 0 || firstScene >= scenes.Length)
             firstScene = 0;
         SwitchScene(firstScene, TransitionMode.Lerp);

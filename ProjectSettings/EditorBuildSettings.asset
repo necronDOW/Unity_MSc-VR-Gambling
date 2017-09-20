@@ -9,5 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 64335ec2b3ab47645b11267ccff0a369
   - enabled: 1
+    path: Assets/Dependencies/MSc_GamblingApp/3D/Scenes/Menu.unity
+    guid: 17f72286e73d99d499bc294e9b0019eb
+  - enabled: 1
+    path: Assets/Dependencies/MSc_GamblingApp/3D/Scenes/gambling_3d.unity
+    guid: c609f94a66e525244b3d5127a8ceec3e
+  - enabled: 1
     path: Assets/Dependencies/MSc_GamblingApp/3D/Scenes/GameOver.unity
     guid: f7ab11f9cc884c24482847514f4e9298

@@ -33,7 +33,7 @@ public class BettingMachineBehaviour : MonoBehaviour
             SetScreenFeed(feeds[i], i);
         }
         
-        //ToggleOn();
+        ToggleOn();
     }
 
     private void OnValidate()
@@ -65,7 +65,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         isOn = !isOn;
 
         if (isOn)
-            minigameMngr.LoadMinigame(machineIndex);
+            minigameMngr.LoadMinigame(machineIndex, "gambling_3d");
         else minigameMngr.UnloadMinigame(machineIndex);
     }
 }

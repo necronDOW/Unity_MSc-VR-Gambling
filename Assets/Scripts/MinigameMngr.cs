@@ -30,10 +30,10 @@ public class MinigameMngr : MonoBehaviour
         mainCamera = Camera.main;
     }
 
-    public void LoadMinigame(int machineIndex)
+    public void LoadMinigame(int machineIndex, string sceneName)
     {
         UnloadMinigame(machineIndex);
-        StartCoroutine(LoadSceneAsync(machineIndex, "GameOver", SceneManager.sceneCount));
+        StartCoroutine(LoadSceneAsync(machineIndex, sceneName, SceneManager.sceneCount));
     }
 
     public void UnloadMinigame(int machineIndex)
@@ -64,7 +64,7 @@ public class MinigameMngr : MonoBehaviour
     {
         Camera gameSceneCamera = FindSceneCamera(loadedMinigameScenes[machineIndex]);
         gameSceneCamera.GetComponent<AudioListener>().enabled = false;
-        bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 0);
+        bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 1);
 
         mainCamera.enabled = true;
 
@@ -79,7 +79,7 @@ public class MinigameMngr : MonoBehaviour
         gameSceneScalar.transform.parent = null;
 
         for (int i = 0; i < rootObjects.Length; i++)
-            rootObjects[i].transform.parent = gameSceneScalar.transform;
+            rootObjects[i].transform.SetParent(gameSceneScalar.transform);
 
         float xOffset = -offsetOnLoad + (((offsetOnLoad * 2.0f) / bettingMachines.Length) * machineIndex);
         gameSceneScalar.transform.position = new Vector3(xOffset, -offsetOnLoad, offsetOnLoad);
