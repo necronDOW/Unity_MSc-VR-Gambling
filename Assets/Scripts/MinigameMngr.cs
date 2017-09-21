@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MinigameMngr : MonoBehaviour
 {
@@ -67,11 +68,11 @@ public class MinigameMngr : MonoBehaviour
         bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 1);
 
         mainCamera.enabled = true;
-
-        HideScene(machineIndex, gameSceneCamera);
+        
+        HideScene(machineIndex);
     }
 
-    private void HideScene(int machineIndex, Camera c)
+    private void HideScene(int machineIndex)
     {
         GameObject[] rootObjects = loadedMinigameScenes[machineIndex].GetRootGameObjects();
         GameObject gameSceneScalar = new GameObject("minigame-holder");

@@ -1315,6 +1315,44 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0333ca03bf50487428d30b70be644f86, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1419385376 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1470268464368644, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+--- !u!114 &1419385377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1419385376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1419385378}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1419385378 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114342722139375836, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 4da32330d300aa64c873490316693f7b, type: 3}
 --- !u!1 &1421075408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1544,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1625071251 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1964771427235790, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+--- !u!114 &1625071252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1625071251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1625071253}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1625071253 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114278979259129720, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+  m_Script: {fileID: 11500000, guid: d1bb3d0fe34b54d45ac3f9d44f0f3a71, type: 3}
+--- !u!1 &1679016747 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1023099859482736, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+--- !u!114 &1679016748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1679016747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1679016749}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1679016749 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114351160360416420, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+  m_Script: {fileID: 11500000, guid: d1bb3d0fe34b54d45ac3f9d44f0f3a71, type: 3}
 --- !u!1001 &1700237159
 Prefab:
   m_ObjectHideFlags: 0
@@ -1797,3 +1911,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dd1a97f22696914c80f56f2559ce45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2115797457 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1682115631955590, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+--- !u!114 &2115797458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2115797457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2115797459}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &2115797459 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114773094256272226, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 4da32330d300aa64c873490316693f7b, type: 3}

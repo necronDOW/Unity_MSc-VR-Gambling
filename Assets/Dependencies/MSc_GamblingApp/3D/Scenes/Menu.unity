@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 266456216}
   - component: {fileID: 266456215}
   - component: {fileID: 266456218}
+  - component: {fileID: 266456219}
   m_Layer: 5
   m_Name: TutorialBtn
   m_TagString: Untagged
@@ -248,6 +249,44 @@ MonoBehaviour:
   clickSoundVolume: 0.25
   hoverSound: {fileID: 8300000, guid: a617f20cbef7f04489735d412a3d8172, type: 3}
   hoverSoundVolume: 1
+--- !u!114 &266456219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266456213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 583521481}
+        m_MethodName: Tutorial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 266456218}
+        m_MethodName: PlayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &276914763
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,8 +622,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fe1ab9685e3da4f9a07b51e20c611c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneIndex: 1
-  tutorialSceneIndex: 2
+  gameSceneIndex: 2
+  tutorialSceneIndex: 3
 --- !u!1 &593831149
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 5
 --- !u!4 &670680922
 Transform:
@@ -803,6 +842,7 @@ GameObject:
   - component: {fileID: 1507278088}
   - component: {fileID: 1507278087}
   - component: {fileID: 1507278090}
+  - component: {fileID: 1507278091}
   m_Layer: 5
   m_Name: PlayBtn
   m_TagString: Untagged
@@ -931,6 +971,44 @@ MonoBehaviour:
   clickSoundVolume: 0.25
   hoverSound: {fileID: 8300000, guid: a617f20cbef7f04489735d412a3d8172, type: 3}
   hoverSoundVolume: 1
+--- !u!114 &1507278091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1507278085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 583521481}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1507278090}
+        m_MethodName: PlayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1923499404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1204,7 @@ GameObject:
   - component: {fileID: 2050418875}
   - component: {fileID: 2050418874}
   - component: {fileID: 2050418877}
+  - component: {fileID: 2050418878}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -1254,6 +1333,44 @@ MonoBehaviour:
   clickSoundVolume: 0.25
   hoverSound: {fileID: 8300000, guid: a617f20cbef7f04489735d412a3d8172, type: 3}
   hoverSoundVolume: 1
+--- !u!114 &2050418878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050418872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 583521481}
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2050418877}
+        m_MethodName: PlayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &2060127352
 GameObject:
   m_ObjectHideFlags: 0

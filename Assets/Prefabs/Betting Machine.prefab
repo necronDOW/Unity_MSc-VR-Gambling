@@ -21,7 +21,9 @@ GameObject:
   - component: {fileID: 4931067891570016}
   - component: {fileID: 33385024802240858}
   - component: {fileID: 23323080136596264}
-  m_Layer: 0
+  - component: {fileID: 65435919266820016}
+  - component: {fileID: 114929883888172814}
+  m_Layer: 8
   m_Name: LowerScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +75,8 @@ GameObject:
   - component: {fileID: 4953041483841804}
   - component: {fileID: 33429696481013310}
   - component: {fileID: 23336206359670024}
+  - component: {fileID: 64817954995935058}
+  - component: {fileID: 54671067752626078}
   - component: {fileID: 114253338360219676}
   m_Layer: 0
   m_Name: Betting Machine
@@ -91,7 +95,9 @@ GameObject:
   - component: {fileID: 4218165467346318}
   - component: {fileID: 33927146555647944}
   - component: {fileID: 23670759800731050}
-  m_Layer: 0
+  - component: {fileID: 65477048692540016}
+  - component: {fileID: 114323463369234308}
+  m_Layer: 8
   m_Name: UpperScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,6 +329,59 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1972929290633618}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54671067752626078
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849749852193936}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &64817954995935058
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1849749852193936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: a8c5b4b9c58e510408384d33883e5674, type: 3}
+--- !u!65 &65435919266820016
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1177316515338464}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 0.005, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65477048692540016
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972929290633618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.999999, y: 0.005, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108238907261750636
 Light:
   m_ObjectHideFlags: 1
@@ -354,7 +413,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 1
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -392,6 +451,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pulseSpeed: 5
+--- !u!114 &114323463369234308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972929290633618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14ff58bcd0db784c90af280af08fe5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114929883888172814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1177316515338464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14ff58bcd0db784c90af280af08fe5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135447104156575154
 SphereCollider:
   m_ObjectHideFlags: 1

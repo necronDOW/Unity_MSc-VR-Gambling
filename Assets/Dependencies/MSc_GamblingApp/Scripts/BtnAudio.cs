@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BtnAudio : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class BtnAudio : MonoBehaviour
     [Range(0, 1)] public float hoverSoundVolume = 1.0f;
 
     private EventTrigger trigger;
+    private Button uiButton;
 
     private void Awake()
     {
+        uiButton = GetComponent<Button>();
+
         if (!output)
         {
             if (!GetComponent<AudioSource>())
@@ -32,14 +36,21 @@ public class BtnAudio : MonoBehaviour
         AddEventListener(EventTriggerType.PointerEnter, PlayHover);
     }
 
-    private void PlayClicked(BaseEventData eventData)
+    public void PlayClicked()
     {
         PlaySound(clickSound, clickSoundVolume);
     }
 
+    private void PlayClicked(BaseEventData eventData)
+    {
+        if (uiButtonInteractable())
+            PlaySound(clickSound, clickSoundVolume);
+    }
+
     private void PlayHover(BaseEventData eventData)
     {
-        PlaySound(hoverSound, hoverSoundVolume);
+        if (uiButtonInteractable())
+            PlaySound(hoverSound, hoverSoundVolume);
     }
 
     private void PlaySound(AudioClip clip, float volume)
@@ -50,6 +61,11 @@ public class BtnAudio : MonoBehaviour
             output.volume = volume;
             output.Play();
         }
+    }
+
+    private bool uiButtonInteractable()
+    {
+        return !uiButton || uiButton.interactable;
     }
 
     private void AddEventListener(EventTriggerType type, UnityEngine.Events.UnityAction<BaseEventData> callback)

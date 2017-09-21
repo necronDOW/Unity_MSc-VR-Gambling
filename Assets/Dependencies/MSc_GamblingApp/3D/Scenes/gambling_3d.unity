@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 134445148}
   - component: {fileID: 134445147}
   - component: {fileID: 134445150}
+  - component: {fileID: 134445151}
   m_Layer: 5
   m_Name: CashOutBtn
   m_TagString: Untagged
@@ -180,7 +181,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.21568628}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.21568628}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -259,6 +260,45 @@ MonoBehaviour:
   clickSoundVolume: 0.2
   hoverSound: {fileID: 8300000, guid: a617f20cbef7f04489735d412a3d8172, type: 3}
   hoverSoundVolume: 1
+--- !u!114 &134445151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134445145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 626826580}
+        m_MethodName: CashOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 134445150}
+        m_MethodName: PlayClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &138339818 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1387534949924398, guid: 636115b87e4c68b46be0dddc284de69f,
@@ -891,6 +931,84 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c805ae9cae8c1cb4c951a73b56fa0c96, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &676329927 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1023099859482736, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+--- !u!1 &676329928 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1964771427235790, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+--- !u!114 &676329929 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114278979259129720, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+  m_Script: {fileID: 11500000, guid: d1bb3d0fe34b54d45ac3f9d44f0f3a71, type: 3}
+--- !u!114 &676329930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676329927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 676329932}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &676329931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676329928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 676329929}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &676329932 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114351160360416420, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 676329926}
+  m_Script: {fileID: 11500000, guid: d1bb3d0fe34b54d45ac3f9d44f0f3a71, type: 3}
 --- !u!1001 &911108103
 Prefab:
   m_ObjectHideFlags: 0
@@ -1538,6 +1656,84 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0333ca03bf50487428d30b70be644f86, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1287665554 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1470268464368644, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+--- !u!114 &1287665555 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114342722139375836, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 4da32330d300aa64c873490316693f7b, type: 3}
+--- !u!1 &1287665556 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1682115631955590, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+--- !u!114 &1287665557 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114773094256272226, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 4da32330d300aa64c873490316693f7b, type: 3}
+--- !u!114 &1287665558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1287665554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1287665555}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &1287665559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1287665556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1287665557}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1421075408
 GameObject:
   m_ObjectHideFlags: 0
