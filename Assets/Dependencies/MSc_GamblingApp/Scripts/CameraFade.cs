@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class CameraFade : MonoBehaviour
 {
@@ -56,7 +57,6 @@ public class CameraFade : MonoBehaviour
             FadeOut(duration);
 
             AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nextScene);
-            async.allowSceneActivation = false;
             StartCoroutine(LoadSceneProgress(async));
         }
     }
@@ -65,8 +65,6 @@ public class CameraFade : MonoBehaviour
     {
         while (asyncScene.progress < 0.9f || !ready)
             yield return null;
-
-        asyncScene.allowSceneActivation = true;
     }
 
     private IEnumerator Fade(float duration, float startAlpha, float endAlpha)

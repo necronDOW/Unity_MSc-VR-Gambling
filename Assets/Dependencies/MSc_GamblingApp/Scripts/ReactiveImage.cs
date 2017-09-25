@@ -18,14 +18,14 @@ public class ReactiveImage : FXScript
     {
         if (mRenderer)
         {
-            defaultColor = mRenderer.sharedMaterial.color;
+            defaultColor = mRenderer.material.color;
             clickedColor = new Color(defaultColor.r, defaultColor.g, defaultColor.b, 1.0f);
         }
     }
 
     public override void Trigger()
     {
-        StartCoroutine(ChangeColor(mRenderer.sharedMaterial));
+        StartCoroutine(ChangeColor(mRenderer.material));
     }
 
     protected IEnumerator ChangeColor(Material material)
@@ -45,11 +45,11 @@ public class ReactiveImage : FXScript
 
     private void OnDisable()
     {
-        mRenderer.sharedMaterial.color = defaultColor;
+        mRenderer.material.color = defaultColor;
     }
 
     private void OnApplicationQuit()
     {
-        mRenderer.sharedMaterial.color = defaultColor;
+        mRenderer.material.color = defaultColor;
     }
 }

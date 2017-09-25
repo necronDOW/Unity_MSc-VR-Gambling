@@ -22,7 +22,7 @@ public class CardScript : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        dealer = GameObject.FindGameObjectWithTag("Dealer").GetComponent<DealerScript>();
+        dealer = HelperTools.FindLocalGameObjectWithTag("Dealer", gameObject.scene).GetComponent<DealerScript>();
 
         StartCoroutine(MoveOverTime());
     }

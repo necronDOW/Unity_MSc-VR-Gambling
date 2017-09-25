@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HelperTools
 {
@@ -28,5 +29,16 @@ public class HelperTools
         }
 
         return output.ToArray();
+    }
+
+    public static GameObject FindLocalGameObjectWithTag(string tag, Scene scene)
+    {
+        GameObject[] allWithTag = GameObject.FindGameObjectsWithTag(tag);
+        for (int i = 0; i < allWithTag.Length; i++) {
+            if (allWithTag[i].scene == scene)
+                return allWithTag[i];
+        }
+
+        return null;
     }
 }

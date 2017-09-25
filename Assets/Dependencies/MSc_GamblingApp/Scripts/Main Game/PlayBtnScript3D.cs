@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayBtnScript3D : ReactiveImage
 {
+    [SerializeField] private DealerScript3D dealer;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,8 +29,6 @@ public class PlayBtnScript3D : ReactiveImage
     public override void Trigger()
     {
         base.Trigger();
-
-        GameObject dealer = GameObject.FindGameObjectWithTag("Dealer");
 
         if (dealer)
             dealer.GetComponent<DealerScript3D>().Deal();

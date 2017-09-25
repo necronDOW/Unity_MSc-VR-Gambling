@@ -24,8 +24,8 @@ public class DiceSpawnerScript : MonoBehaviour
     private void Awake()
     {
         dice = new DiceScript[spawnPoints.Length];
-        audioManager = GameObject.FindGameObjectWithTag("Scene").GetComponent<DiceAudioManager>();
-        fxManager = GameObject.FindGameObjectWithTag("FX").GetComponent<FXManager>();
+        audioManager = HelperTools.FindLocalGameObjectWithTag("Scene", gameObject.scene).GetComponent<DiceAudioManager>();
+        fxManager = HelperTools.FindLocalGameObjectWithTag("FX", gameObject.scene).GetComponent<FXManager>();
 
         LoadOrder();
     }
@@ -172,7 +172,7 @@ public class DiceSpawnerScript : MonoBehaviour
         for (int i = 0; i < dice.Length; i++)
             Destroy(dice[i].gameObject);
 
-        GameObject.FindGameObjectWithTag("Scene Manager").GetComponent<SceneMngr>().SwitchScene(0, SceneMngr.TransitionMode.Lerp);
+        HelperTools.FindLocalGameObjectWithTag("Scene Manager", gameObject.scene).GetComponent<SceneMngr>().SwitchScene(0, SceneMngr.TransitionMode.Lerp);
     }
 
     private bool IsStopSignalTurn()

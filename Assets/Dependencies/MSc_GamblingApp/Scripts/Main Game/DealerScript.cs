@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DealerScript : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class DealerScript : MonoBehaviour
 
     protected virtual void Start()
     {
-        wallet = GameObject.FindGameObjectWithTag("UI").GetComponent<WalletScript>();
+        wallet = HelperTools.FindLocalGameObjectWithTag("UI", gameObject.scene).GetComponent<WalletScript>();
         audioManager = GameObject.FindGameObjectWithTag("Scene").GetComponent<MainAudioManager>();
         fxManager = transform.Find("FX").GetComponent<FXManager>();
 
@@ -73,7 +74,7 @@ public class DealerScript : MonoBehaviour
                 
                 if (turn == config.cardSceneInterventionTurn)
                 {
-                    GameObject.FindGameObjectWithTag("Scene Manager").GetComponent<SceneMngr>().SwitchScene(config.interventionSceneIndex, config.interventionTransition, 0.5f);
+                    HelperTools.FindLocalGameObjectWithTag("Scene Manager", gameObject.scene).GetComponent<SceneMngr>().SwitchScene(config.interventionSceneIndex, config.interventionTransition, 0.5f);
                     dealEnabled = false;
                 }
             }
@@ -168,7 +169,12 @@ public class DealerScript : MonoBehaviour
     private void ShowGameOverScene()
     {
         if (cameraFade)
-            cameraFade.FadeOut(0.25f, 3);
-        else UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+            cameraFade.FadeOut(0.25f, 4);
+        else SceneManager.LoadScene(4);
+    }
+
+    private void LinkPlayerData()
+    {
+        Debug.Log(GameObject.FindGameObjectWithTag("Finish"));
     }
 }

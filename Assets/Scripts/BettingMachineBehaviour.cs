@@ -28,7 +28,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         isOn = !isOn;
 
         if (isOn)
-            minigameMngr.LoadMinigame(machineIndex, "gambling_3d");
+            minigameMngr.LoadMinigame(machineIndex, "gambling_tutorial");
         else minigameMngr.UnloadMinigame(machineIndex);
     }
 

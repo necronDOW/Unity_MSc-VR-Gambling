@@ -47,15 +47,18 @@ public class BM_Screen : MonoBehaviour
             return Vector3.one * -1.0f;
 
         Vector3 pt1 = Vector3.right * bc.size.x * 0.5f;
-        Vector3 pt2 = Vector3.forward * bc.size.z * 0.5f;
+        Vector3 pt2 = Vector3.up * bc.size.y * 0.5f;
         Vector3 pt = pt1 + pt2;
 
         hitPoint = bc.transform.InverseTransformPoint(hitPoint);
         hitPoint += pt;
         pt *= 2.0f;
 
-        float x = 1.0f - hitPoint.x / pt.x;
-        float y = 1.0f - hitPoint.z / pt.z;
+        Debug.DrawLine(pt, -pt, Color.blue, Mathf.Infinity);
+        Debug.DrawLine(Vector3.zero, hitPoint, Color.red, Mathf.Infinity);
+
+        float x = hitPoint.x / pt.x;
+        float y = hitPoint.y / pt.y;
 
         return new Vector3(feed.pixelWidth * x, feed.pixelHeight * y);
     }

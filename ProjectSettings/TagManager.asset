@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Betting Machine
   - BM Screen
+  - Debugger
+  - Scene Manager
+  - Wallet
+  - UI
+  - Dealer
+  - FX
+  - Scene
+  - PlayerData
   layers:
   - Default
   - TransparentFX
