@@ -465,6 +465,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f1f67bd07a32564e92ecc6fecda8a70, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &383229485 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114138403545803346, guid: 7f1f67bd07a32564e92ecc6fecda8a70,
+    type: 2}
+  m_PrefabInternal: {fileID: 383229484}
+  m_Script: {fileID: 11500000, guid: 431b34401e8c41a468fd565b34ff3811, type: 3}
 --- !u!1 &459948858 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100024, guid: 91301b2436a80984f8ec1742165aacef, type: 3}
@@ -739,6 +745,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0.00000009203348, y: 0.000006236136}
   m_SizeDelta: {x: 1024, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &556993584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 556993586}
+  - component: {fileID: 556993585}
+  m_Layer: 0
+  m_Name: Player Data Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &556993585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556993584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5462d282027c4e34490f619be57eef6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceSpawnerRef: {fileID: 1287665560}
+  walletRef: {fileID: 383229485}
+--- !u!4 &556993586
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556993584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.20017976, y: 0.9738444, z: 0.39944157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578882905 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1757405200675698, guid: c805ae9cae8c1cb4c951a73b56fa0c96,
@@ -880,7 +928,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4082043775623016, guid: c805ae9cae8c1cb4c951a73b56fa0c96, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1757405200675698, guid: c805ae9cae8c1cb4c951a73b56fa0c96, type: 2}
       propertyPath: m_IsActive
@@ -1179,7 +1227,7 @@ Transform:
   m_Children:
   - {fileID: 556413534}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 35, y: 179.99998, z: 0}
 --- !u!81 &926366629
 AudioListener:
@@ -1512,7 +1560,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4153495113810150, guid: 636115b87e4c68b46be0dddc284de69f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114383485900732512, guid: 636115b87e4c68b46be0dddc284de69f,
         type: 2}
@@ -1579,7 +1627,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4001742460392688, guid: 0333ca03bf50487428d30b70be644f86, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114289968742716070, guid: 0333ca03bf50487428d30b70be644f86,
         type: 2}
@@ -1766,6 +1814,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1287665560 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114289968742716070, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 4ce3eecbfd8bcb849943af7e4517c5cc, type: 3}
 --- !u!1 &1421075408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +2010,7 @@ Transform:
   - {fileID: 494278290}
   - {fileID: 1481624102}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1523759771
 MonoBehaviour:

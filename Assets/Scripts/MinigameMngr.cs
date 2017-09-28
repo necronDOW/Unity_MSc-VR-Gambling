@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MinigameMngr : MonoBehaviour
 {
+    public GameObject minigameInstancePrefab;
+
     [SerializeField] private float offsetOnLoad = 1000;
     private BettingMachineBehaviour[] bettingMachines;
     private Scene[] loadedMinigameScenes;
@@ -75,15 +77,16 @@ public class MinigameMngr : MonoBehaviour
     private void HideScene(int machineIndex)
     {
         GameObject[] rootObjects = loadedMinigameScenes[machineIndex].GetRootGameObjects();
-        GameObject gameSceneScalar = new GameObject("minigame-holder");
-        gameSceneScalar.transform.parent = rootObjects[0].transform;
-        gameSceneScalar.transform.parent = null;
+        GameObject instance = Instantiate(minigameInstancePrefab);
+
+        instance.transform.parent = rootObjects[0].transform;
+        instance.transform.parent = null;
 
         for (int i = 0; i < rootObjects.Length; i++)
-            rootObjects[i].transform.SetParent(gameSceneScalar.transform);
+            rootObjects[i].transform.SetParent(instance.transform);
 
         float xOffset = -offsetOnLoad + (((offsetOnLoad * 2.0f) / bettingMachines.Length) * machineIndex);
-        gameSceneScalar.transform.position = new Vector3(xOffset, -offsetOnLoad, offsetOnLoad);
+        instance.transform.position = new Vector3(xOffset, -offsetOnLoad, offsetOnLoad);
     }
 
     private Camera FindSceneCamera(Scene s)

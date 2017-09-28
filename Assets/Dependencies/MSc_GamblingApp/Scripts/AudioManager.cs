@@ -4,13 +4,27 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    private GameObject audioHolder
+    {
+        get
+        {
+            if (!_audioHolder) {
+                _audioHolder = new GameObject("audio-holder");
+                _audioHolder.transform.SetParent(gameObject.transform, false);
+                _audioHolder.transform.position = transform.position;
+            }
+
+            return _audioHolder;
+        }
+    }
+    private GameObject _audioHolder;
     protected AudioSource[] channels = new AudioSource[5];
 
     protected void ConfigureChannel(int index, bool loop, AudioClip clip, float volume = 1.0f, bool playNow = false)
     {
         if (index < channels.Length)
         {
-            channels[index] = gameObject.AddComponent<AudioSource>();
+            channels[index] = audioHolder.AddComponent<AudioSource>();
             channels[index].loop = loop;
             channels[index].volume = volume;
             channels[index].clip = clip;

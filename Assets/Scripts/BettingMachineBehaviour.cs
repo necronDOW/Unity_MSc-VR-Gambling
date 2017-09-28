@@ -10,6 +10,7 @@ public class BettingMachineBehaviour : MonoBehaviour
     [HideInInspector] public MinigameMngr minigameMngr;
     [HideInInspector] public int machineIndex = -1;
     [HideInInspector] public CardBehaviour insertedCard;
+    public VirtualAudioListener machineAudio;
 
     [SerializeField] private Material screenBaseMaterial;
     [SerializeField] private BM_Screen[] screens;
@@ -35,6 +36,9 @@ public class BettingMachineBehaviour : MonoBehaviour
     public void SetScreenFeed(Camera feed, int index)
     {
         screens[index].SetFeed(feed);
+
+        if (machineAudio)
+            machineAudio.PopulateInputsRelativeToCamera(feed);
     }
 
     private void OnCollisionEnter(Collision collision)
