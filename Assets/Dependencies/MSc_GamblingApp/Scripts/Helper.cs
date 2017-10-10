@@ -74,4 +74,9 @@ public class Helper
 
         return materials;
     }
+
+    public static void SwitchToScene(int index)
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(index);
+    }
 }

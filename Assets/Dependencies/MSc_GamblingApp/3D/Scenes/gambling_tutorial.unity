@@ -333,7 +333,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 23741719a2fefe748a2c135e3e8940fb, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1400,6 +1400,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0333ca03bf50487428d30b70be644f86, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1287665554 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114959392595580598, guid: 0333ca03bf50487428d30b70be644f86,
+    type: 2}
+  m_PrefabInternal: {fileID: 1287665553}
+  m_Script: {fileID: 11500000, guid: 22d01355871855747812b5e32365e8cc, type: 3}
 --- !u!1 &1419385376 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1470268464368644, guid: 0333ca03bf50487428d30b70be644f86,
@@ -1450,6 +1456,7 @@ GameObject:
   - component: {fileID: 1421075410}
   - component: {fileID: 1421075409}
   - component: {fileID: 1421075412}
+  - component: {fileID: 1421075413}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Scene Manager
@@ -1528,6 +1535,20 @@ MonoBehaviour:
     cameraEulerAngles: {x: 65, y: 180, z: 0}
     container: {fileID: 138339818}
     hudContainer: {fileID: 911108105}
+--- !u!114 &1421075413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1421075408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c956dfca7cfacf2449a11af50fbf0138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managers:
+  - {fileID: 578882907}
+  - {fileID: 1287665554}
 --- !u!1 &1481624101
 GameObject:
   m_ObjectHideFlags: 0

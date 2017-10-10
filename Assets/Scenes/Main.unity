@@ -808,6 +808,11 @@ Prefab:
       propertyPath: machineAudio
       value: 
       objectReference: {fileID: 148804097}
+    - target: {fileID: 54671067752626078, guid: 9e350a43f4f64c148a33ffa771f902b8,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e350a43f4f64c148a33ffa771f902b8, type: 2}
   m_IsPrefabParent: 0

@@ -22,7 +22,7 @@ public class MenuScript : MonoBehaviour
         if (gameSceneIndex >= 0)
         {
             if (cameraFade)
-                cameraFade.FadeOut(1.0f, gameSceneIndex);
+                cameraFade.FadeOut(1.0f, Helper.SwitchToScene, 2);
             else UnityEngine.SceneManagement.SceneManager.LoadScene(gameSceneIndex);
         }
     }
@@ -35,7 +35,7 @@ public class MenuScript : MonoBehaviour
         if (tutorialSceneIndex >= 0)
         {
             if (cameraFade)
-                cameraFade.FadeOut(1.0f, tutorialSceneIndex);
+                cameraFade.FadeOut(1.0f, Helper.SwitchToScene, 3);
             else UnityEngine.SceneManagement.SceneManager.LoadScene(tutorialSceneIndex);
         }
     }

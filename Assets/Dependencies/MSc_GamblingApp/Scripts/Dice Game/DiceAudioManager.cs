@@ -7,8 +7,10 @@ public class DiceAudioManager : AudioManager
     public AudioClip stopSignalSound;
     public AudioClip selectSound;
 
-    private void Awake()
+    public override void Init()
     {
+        base.Init();
+
         ConfigureChannel(0, false, stopSignalSound);
         ConfigureChannel(1, false, selectSound);
     }

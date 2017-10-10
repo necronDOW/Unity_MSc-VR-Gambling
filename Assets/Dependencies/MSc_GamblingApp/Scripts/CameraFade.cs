@@ -22,52 +22,38 @@ public class CameraFade : MonoBehaviour
             blackoutImage.color = Color.clear;
             blackoutImage.raycastTarget = false;
 
-            blackoutImage.rectTransform.anchorMin = Vector2.zero;
-            blackoutImage.rectTransform.anchorMax = Vector2.one;
-            blackoutImage.rectTransform.offsetMin = Vector2.zero;
-            blackoutImage.rectTransform.offsetMax = Vector2.zero;
+            blackoutImage.rectTransform.anchorMin = new Vector2(0, 0);
+            blackoutImage.rectTransform.anchorMax = new Vector2(1, 1);
+
+            blackoutImage.rectTransform.localPosition = Vector3.zero;
+            blackoutImage.rectTransform.localRotation = Quaternion.identity;
+            blackoutImage.rectTransform.localScale = Vector3.one;
         }
 
         ready = true;
         FadeIn(initialFadeIn);
     }
-
+    
     public void FadeIn(float duration)
     {
         if (ready)
         {
             ready = false;
-            StartCoroutine(Fade(duration, 1.25f, 0.0f));
+            StartCoroutine(Fade(duration, 1.25f, 0.0f, null, 0));
         }
     }
 
-    public void FadeOut(float duration)
+    public void FadeOut(float duration) { FadeOut(duration, null, 0); }
+    public void FadeOut(float duration, UnityAction<int> sceneSwitchInvoke, int nextScene)
     {
         if (ready)
         {
             ready = false;
-            StartCoroutine(Fade(duration, 0.0f, 1.25f));
+            StartCoroutine(Fade(duration, 0.0f, 1.25f, sceneSwitchInvoke, nextScene));
         }
     }
 
-    public void FadeOut(float duration, int nextScene)
-    {
-        if (ready)
-        {
-            FadeOut(duration);
-
-            AsyncOperation async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(nextScene);
-            StartCoroutine(LoadSceneProgress(async));
-        }
-    }
-
-    private IEnumerator LoadSceneProgress(AsyncOperation asyncScene)
-    {
-        while (asyncScene.progress < 0.9f || !ready)
-            yield return null;
-    }
-
-    private IEnumerator Fade(float duration, float startAlpha, float endAlpha)
+    private IEnumerator Fade(float duration, float startAlpha, float endAlpha, UnityAction<int> onComplete, int args0)
     {
         float elapsedTime = 0.0f;
         while (elapsedTime <= duration)
@@ -78,5 +64,8 @@ public class CameraFade : MonoBehaviour
         }
 
         ready = true;
+
+        if (onComplete != null)
+            onComplete.Invoke(args0);
     }
 }

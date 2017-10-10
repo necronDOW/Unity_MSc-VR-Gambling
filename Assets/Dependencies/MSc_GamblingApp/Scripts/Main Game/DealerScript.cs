@@ -124,7 +124,7 @@ public class DealerScript : MonoBehaviour
                 else
                 {
                     wallet.playerData.cashedOut = false;
-                    ShowGameOverScene();
+                    StartGameOverSequence();
                 }
             }
         }
@@ -135,7 +135,7 @@ public class DealerScript : MonoBehaviour
         if (turn > config.cardSceneInterventionTurn)
         {
             wallet.playerData.cashedOut = true;
-            ShowGameOverScene();
+            StartGameOverSequence();
         }
     }
 
@@ -166,10 +166,10 @@ public class DealerScript : MonoBehaviour
         return (cardsInPlay[0] && cardsInPlay[1] && cardsInPlay[0].animationDone && cardsInPlay[1].animationDone);
     }
 
-    private void ShowGameOverScene()
+    private void StartGameOverSequence()
     {
         if (cameraFade)
-            cameraFade.FadeOut(0.25f, 4);
+            cameraFade.FadeOut(0.25f, Helper.SwitchToScene, 4);
         else SceneManager.LoadScene(4);
     }
 

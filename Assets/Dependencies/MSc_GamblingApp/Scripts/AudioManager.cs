@@ -20,6 +20,11 @@ public class AudioManager : MonoBehaviour
     private GameObject _audioHolder;
     protected AudioSource[] channels = new AudioSource[5];
 
+    public virtual void Init()
+    {
+
+    }
+
     protected void ConfigureChannel(int index, bool loop, AudioClip clip, float volume = 1.0f, bool playNow = false)
     {
         if (index < channels.Length)
@@ -29,6 +34,7 @@ public class AudioManager : MonoBehaviour
             channels[index].volume = volume;
             channels[index].clip = clip;
             channels[index].playOnAwake = playNow;
+            channels[index].spatialBlend = 1.0f;
 
             if (playNow)
                 channels[index].Play();

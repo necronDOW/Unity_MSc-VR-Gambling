@@ -9,8 +9,10 @@ public class MainAudioManager : AudioManager
     public AudioClip bigWinSound;
     public AudioClip loseSound;
 
-    private void Awake()
+    public override void Init()
     {
+        base.Init();
+
         ConfigureChannel(0, true, winSound);
         ConfigureChannel(1, true, bigWinSound, 0.25f);
         ConfigureChannel(2, false, paySound);
