@@ -21,7 +21,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         for (int i = 0; i < screens.Length; i++)
             screens[i].Setup(this, i, 1024, 1024, screenBaseMaterial);
         
-        ToggleOn();
+        //ToggleOn();
     }
 
     public void ToggleOn()
