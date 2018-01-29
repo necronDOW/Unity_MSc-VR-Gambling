@@ -1,52 +1,22 @@
 fileFormatVersion: 2
-guid: fe158d6144e7ece49b7177bdb0623cc9
-timeCreated: 1516924854
+guid: 4c09a629a5cdb1d43ba24dd07c85d0bf
+timeCreated: 1517224576
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: B_Door-Frame
-    100002: Booth
-    100004: Booth_Window-Frame
-    100006: Ceiling
-    100008: F_Door-Frame
-    100010: F_Window-Frame
-    100012: Floor
-    100014: Room
-    100016: //RootNode
-    400000: B_Door-Frame
-    400002: Booth
-    400004: Booth_Window-Frame
-    400006: Ceiling
-    400008: F_Door-Frame
-    400010: F_Window-Frame
-    400012: Floor
-    400014: Room
-    400016: //RootNode
-    2300000: B_Door-Frame
-    2300002: Booth
-    2300004: Booth_Window-Frame
-    2300006: Ceiling
-    2300008: F_Door-Frame
-    2300010: F_Window-Frame
-    2300012: Floor
-    2300014: Room
-    3300000: B_Door-Frame
-    3300002: Booth
-    3300004: Booth_Window-Frame
-    3300006: Ceiling
-    3300008: F_Door-Frame
-    3300010: F_Window-Frame
-    3300012: Floor
-    3300014: Room
-    4300000: Booth_Window-Frame
-    4300002: F_Window-Frame
-    4300004: Ceiling
-    4300006: Floor
-    4300008: B_Door-Frame
-    4300010: F_Door-Frame
-    4300012: Booth
-    4300014: Room
+    100000: TV
+    100002: //RootNode
+    100004: TV-Screen
+    400000: TV
+    400002: //RootNode
+    400004: TV-Screen
+    2300000: TV
+    2300002: TV-Screen
+    3300000: TV
+    3300002: TV-Screen
+    4300000: TV-Screen
+    4300002: TV
   materials:
     importMaterials: 0
     materialName: 0

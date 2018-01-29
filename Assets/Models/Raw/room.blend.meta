@@ -14,6 +14,14 @@ ModelImporter:
     100012: Ceiling
     100014: F_Window-Frame
     100016: Floor
+    100018: Bet-Slip-Holder
+    100020: Bet-Slip-Table
+    100022: Chair
+    100024: Chair-Cushion
+    100026: Desk
+    100028: Round_Table
+    100030: TV
+    100032: TV-Screen
     400000: B_Door-Frame
     400002: Booth
     400004: F_Door-Frame
@@ -23,6 +31,14 @@ ModelImporter:
     400012: Ceiling
     400014: F_Window-Frame
     400016: Floor
+    400018: Bet-Slip-Holder
+    400020: Bet-Slip-Table
+    400022: Chair
+    400024: Chair-Cushion
+    400026: Desk
+    400028: Round_Table
+    400030: TV
+    400032: TV-Screen
     2300000: B_Door-Frame
     2300002: Booth
     2300004: F_Door-Frame
@@ -31,6 +47,14 @@ ModelImporter:
     2300010: Ceiling
     2300012: F_Window-Frame
     2300014: Floor
+    2300016: Bet-Slip-Holder
+    2300018: Bet-Slip-Table
+    2300020: Chair
+    2300022: Chair-Cushion
+    2300024: Desk
+    2300026: Round_Table
+    2300028: TV
+    2300030: TV-Screen
     3300000: B_Door-Frame
     3300002: Booth
     3300004: F_Door-Frame
@@ -39,6 +63,14 @@ ModelImporter:
     3300010: Ceiling
     3300012: F_Window-Frame
     3300014: Floor
+    3300016: Bet-Slip-Holder
+    3300018: Bet-Slip-Table
+    3300020: Chair
+    3300022: Chair-Cushion
+    3300024: Desk
+    3300026: Round_Table
+    3300028: TV
+    3300030: TV-Screen
     4300000: B_Door-Frame
     4300002: F_Door-Frame
     4300004: Booth
@@ -47,6 +79,14 @@ ModelImporter:
     4300010: F_Window-Frame
     4300012: Ceiling
     4300014: Floor
+    4300016: TV-Screen
+    4300018: TV
+    4300020: Bet-Slip-Table
+    4300022: Bet-Slip-Holder
+    4300024: Desk
+    4300026: Chair-Cushion
+    4300028: Chair
+    4300030: Round_Table
     7400000: Default Take
     9500000: //RootNode
   materials:
