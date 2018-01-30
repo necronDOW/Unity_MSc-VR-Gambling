@@ -22,6 +22,14 @@ ModelImporter:
     100028: Round_Table
     100030: TV
     100032: TV-Screen
+    100034: Cylinder
+    100036: High-Chair
+    100038: High-Table_1x3
+    100040: Scale-Ref
+    100042: Text
+    100044: Text_001
+    100046: Text_002
+    100048: Text_003
     400000: B_Door-Frame
     400002: Booth
     400004: F_Door-Frame
@@ -39,6 +47,14 @@ ModelImporter:
     400028: Round_Table
     400030: TV
     400032: TV-Screen
+    400034: Cylinder
+    400036: High-Chair
+    400038: High-Table_1x3
+    400040: Scale-Ref
+    400042: Text
+    400044: Text_001
+    400046: Text_002
+    400048: Text_003
     2300000: B_Door-Frame
     2300002: Booth
     2300004: F_Door-Frame
@@ -55,6 +71,14 @@ ModelImporter:
     2300026: Round_Table
     2300028: TV
     2300030: TV-Screen
+    2300032: Cylinder
+    2300034: High-Chair
+    2300036: High-Table_1x3
+    2300038: Scale-Ref
+    2300040: Text
+    2300042: Text_001
+    2300044: Text_002
+    2300046: Text_003
     3300000: B_Door-Frame
     3300002: Booth
     3300004: F_Door-Frame
@@ -71,6 +95,14 @@ ModelImporter:
     3300026: Round_Table
     3300028: TV
     3300030: TV-Screen
+    3300032: Cylinder
+    3300034: High-Chair
+    3300036: High-Table_1x3
+    3300038: Scale-Ref
+    3300040: Text
+    3300042: Text_001
+    3300044: Text_002
+    3300046: Text_003
     4300000: B_Door-Frame
     4300002: F_Door-Frame
     4300004: Booth
@@ -87,6 +119,14 @@ ModelImporter:
     4300026: Chair-Cushion
     4300028: Chair
     4300030: Round_Table
+    4300032: High-Chair
+    4300034: Cylinder
+    4300036: High-Table_1x3
+    4300038: Scale-Ref
+    4300040: Text
+    4300042: Text_003
+    4300044: Text_002
+    4300046: Text_001
     7400000: Default Take
     9500000: //RootNode
   materials:
