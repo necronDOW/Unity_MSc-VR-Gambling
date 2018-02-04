@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: fe158d6144e7ece49b7177bdb0623cc9
-timeCreated: 1516924854
+guid: 87673608780d61c41b00b56ce26b7804
+timeCreated: 1517751732
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -12,8 +12,8 @@ ModelImporter:
     100008: F_Door-Frame
     100010: F_Window-Frame
     100012: Floor
-    100014: Room
-    100016: //RootNode
+    100014: //RootNode
+    100016: Room
     400000: B_Door-Frame
     400002: Booth
     400004: Booth_Window-Frame
@@ -39,13 +39,13 @@ ModelImporter:
     3300010: F_Window-Frame
     3300012: Floor
     3300014: Room
-    4300000: Booth_Window-Frame
-    4300002: F_Window-Frame
-    4300004: Ceiling
-    4300006: Floor
-    4300008: B_Door-Frame
-    4300010: F_Door-Frame
-    4300012: Booth
+    4300000: B_Door-Frame
+    4300002: Booth
+    4300004: Booth_Window-Frame
+    4300006: F_Window-Frame
+    4300008: Ceiling
+    4300010: Floor
+    4300012: F_Door-Frame
     4300014: Room
   materials:
     importMaterials: 0
@@ -71,10 +71,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -84,7 +84,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8

@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 4c09a629a5cdb1d43ba24dd07c85d0bf
-timeCreated: 1517224576
+guid: fc6f392110d2f9046879d02cb3364ea7
+timeCreated: 1517755143
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: TV
-    100002: //RootNode
+    100000: //RootNode
+    100002: TV
     100004: TV-Screen
-    400000: TV
-    400002: //RootNode
+    400000: //RootNode
+    400002: TV
     400004: TV-Screen
     2300000: TV
     2300002: TV-Screen
@@ -41,10 +41,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -52,9 +52,9 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
+    optimizeMeshForGPU: 0
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
