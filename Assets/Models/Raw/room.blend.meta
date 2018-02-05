@@ -30,6 +30,7 @@ ModelImporter:
     100044: Text_001
     100046: Text_002
     100048: Text_003
+    100050: Cube
     400000: B_Door-Frame
     400002: Booth
     400004: F_Door-Frame
@@ -55,6 +56,7 @@ ModelImporter:
     400044: Text_001
     400046: Text_002
     400048: Text_003
+    400050: Cube
     2300000: B_Door-Frame
     2300002: Booth
     2300004: F_Door-Frame
@@ -79,6 +81,7 @@ ModelImporter:
     2300042: Text_001
     2300044: Text_002
     2300046: Text_003
+    2300048: Cube
     3300000: B_Door-Frame
     3300002: Booth
     3300004: F_Door-Frame
@@ -103,6 +106,7 @@ ModelImporter:
     3300042: Text_001
     3300044: Text_002
     3300046: Text_003
+    3300048: Cube
     4300000: B_Door-Frame
     4300002: F_Door-Frame
     4300004: Booth
@@ -127,6 +131,7 @@ ModelImporter:
     4300042: Text_003
     4300044: Text_002
     4300046: Text_001
+    4300048: Cube
     7400000: Default Take
     9500000: //RootNode
   materials:
