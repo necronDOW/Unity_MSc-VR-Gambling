@@ -29,7 +29,7 @@ public class MirrorReflection : MonoBehaviour
         var rend = GetComponent<Renderer>();
         if (!enabled || !rend || !rend.sharedMaterial || !rend.enabled)
             return;
-
+        
         Camera cam = Camera.current;
         if (!cam)
             return;
@@ -67,7 +67,8 @@ public class MirrorReflection : MonoBehaviour
         // plane. This way we clip everything below/above it for free.
         Vector4 clipPlane = CameraSpacePlane(reflectionCamera, pos, normal, 1.0f);
         //Matrix4x4 projection = cam.projectionMatrix;
-        Matrix4x4 projection = cam.CalculateObliqueMatrix(clipPlane);
+        
+        Matrix4x4 projection =  cam.CalculateObliqueMatrix(clipPlane);
         reflectionCamera.projectionMatrix = projection;
 
         reflectionCamera.cullingMask = ~(1 << 4) & m_ReflectLayers.value; // never render water layer
@@ -92,7 +93,6 @@ public class MirrorReflection : MonoBehaviour
 
         s_InsideRendering = false;
     }
-
 
     // Cleanup all the objects we possibly have created
     void OnDisable()
@@ -135,7 +135,7 @@ public class MirrorReflection : MonoBehaviour
         dest.farClipPlane = src.farClipPlane;
         dest.nearClipPlane = src.nearClipPlane;
         dest.orthographic = src.orthographic;
-        dest.fieldOfView = src.fieldOfView;
+        //dest.fieldOfView = src.fieldOfView;
         dest.aspect = src.aspect;
         dest.orthographicSize = src.orthographicSize;
     }
@@ -153,7 +153,6 @@ public class MirrorReflection : MonoBehaviour
             m_ReflectionTexture = new RenderTexture(m_TextureSize, m_TextureSize, 16);
             m_ReflectionTexture.name = "__MirrorReflection" + GetInstanceID();
             m_ReflectionTexture.isPowerOfTwo = true;
-            //m_ReflectionTexture.vrUsage = VRTextureUsage.TwoEyes;
             m_ReflectionTexture.hideFlags = HideFlags.DontSave;
             m_OldReflectionTextureSize = m_TextureSize;
         }
