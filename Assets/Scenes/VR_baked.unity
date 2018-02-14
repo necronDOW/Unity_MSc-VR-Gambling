@@ -626,7 +626,7 @@ Prefab:
     - target: {fileID: 114412176852192860, guid: 44ab5063da19ebb479a2d723f5a08084,
         type: 2}
       propertyPath: sceneName
-      value: gambling_tutorial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ab5063da19ebb479a2d723f5a08084, type: 2}
@@ -1007,7 +1007,7 @@ Prefab:
     - target: {fileID: 114412176852192860, guid: 44ab5063da19ebb479a2d723f5a08084,
         type: 2}
       propertyPath: sceneName
-      value: gambling_tutorial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ab5063da19ebb479a2d723f5a08084, type: 2}
@@ -1400,7 +1400,7 @@ Prefab:
     - target: {fileID: 114412176852192860, guid: 44ab5063da19ebb479a2d723f5a08084,
         type: 2}
       propertyPath: sceneName
-      value: gambling_tutorial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ab5063da19ebb479a2d723f5a08084, type: 2}
@@ -1628,7 +1628,7 @@ Prefab:
     - target: {fileID: 114412176852192860, guid: 44ab5063da19ebb479a2d723f5a08084,
         type: 2}
       propertyPath: sceneName
-      value: gambling_tutorial
+      value: FiveCardDraw
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ab5063da19ebb479a2d723f5a08084, type: 2}
@@ -2790,7 +2790,7 @@ MonoBehaviour:
   minigameInstancePrefab: {fileID: 1494813755589384, guid: 3260560c9d37a1d459f3733003f50320,
     type: 2}
   offsetOnLoad: 1000
-  brightnessModifier: 0.35
+  brightnessModifier: 1
 --- !u!1 &1535463112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,7 +3434,7 @@ Prefab:
     - target: {fileID: 114412176852192860, guid: 44ab5063da19ebb479a2d723f5a08084,
         type: 2}
       propertyPath: sceneName
-      value: gambling_tutorial
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44ab5063da19ebb479a2d723f5a08084, type: 2}
