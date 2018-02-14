@@ -89,20 +89,20 @@ class FCD_DealerAssistant
     {
         int[] set;
 
-        //if (balanceOffset == 0.0f)
-        //    set = RandomHand();
-        //else
-        //{
-        //    if (balanceOffset > 0.0f)
-        //        set = loseSequence[0].GetRandomSet();
-        //    else set = winSequence[0].GetRandomSet();
+        if (balanceOffset == 0.0f)
+            set = RandomHand();
+        else
+        {
+            if (balanceOffset > 0.0f)
+                set = loseSequence[0].GetRandomSet();
+            else set = winSequence[0].GetRandomSet();
 
-        //    ScrambleSet(ref set);
-        //    RandomizeSuits(ref set);
-        //}
+            ScrambleSet(ref set);
+            RandomizeSuits(ref set);
+        }
 
         //set = new int[5] { 0, 0, 1, 10, 10 };
-        set = new int[5] { 8, 9, 10, 12, 12 };
+        //set = new int[5] { 8, 9, 10, 12, 12 };
 
         simulatedDeck.Reset();
         return set;

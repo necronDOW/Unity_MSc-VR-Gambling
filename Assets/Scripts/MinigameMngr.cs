@@ -13,7 +13,7 @@ public class MinigameMngr : MonoBehaviour
     [SerializeField] private float brightnessModifier = 0.35f;
     private BettingMachineBehaviour[] bettingMachines;
     private Scene[] loadedMinigameScenes;
-    private Camera mainCamera;
+    //private Camera mainCamera;
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class MinigameMngr : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
     }
 
     public void LoadMinigame(int machineIndex, string sceneName)
@@ -71,7 +71,7 @@ public class MinigameMngr : MonoBehaviour
         gameSceneCamera.GetComponent<AudioListener>().enabled = false;
         bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 1);
 
-        mainCamera.enabled = true;
+        //mainCamera.enabled = true;
 
         MoveSceneToHiddenLocation(machineIndex);
     }

@@ -9,13 +9,13 @@ public class FCD_DealerBehaviour : MonoBehaviour
     [SerializeField] private FCD_WalletScript walletScript;
     [SerializeField] private HL_GMBehaviour hl_GameMasterBehaviour;
     [SerializeField] private SceneManager_v2 sceneManager;
+    [SerializeField] private FCD_ButtonGroup holdButtonGroup;
     public FCD_DelayedWalletUpdate delayedWalletUpdater { get; private set; }
 
     private FCD_DealerEngine engine;
     private FCD_CardBehaviour[] cards;
     private int phase = 0;
     private int[] baseDealtHand;
-    private FCD_ButtonGroup holdButtonGroup;
     private FX_AnimatorInterface animatorInterface;
 
     private bool isTiming = false;
@@ -39,7 +39,6 @@ public class FCD_DealerBehaviour : MonoBehaviour
         hl_GameMasterBehaviour.currentEngineInstance = engineInstance;
 
         cards = GetComponentsInChildren<FCD_CardBehaviour>();
-        holdButtonGroup = GameObject.FindGameObjectWithTag("Buttons").GetComponent<FCD_ButtonGroup>();
         SetBaseDealtHand(new int[5] { -1, -1, -1, -1, -1 });
         delayedWalletUpdater = walletScript.GetComponent<FCD_DelayedWalletUpdate>();
         animatorInterface = GetComponent<FX_AnimatorInterface>();
