@@ -10,6 +10,7 @@ public class MinigameMngr : MonoBehaviour
     public GameObject minigameInstancePrefab;
 
     [SerializeField] private float offsetOnLoad = 1000;
+    [SerializeField] private float brightnessModifier = 0.35f;
     private BettingMachineBehaviour[] bettingMachines;
     private Scene[] loadedMinigameScenes;
     private Camera mainCamera;
@@ -19,8 +20,7 @@ public class MinigameMngr : MonoBehaviour
         bettingMachines = GameObject.FindGameObjectsWithTag("Betting Machine")
             .Select(x => x.GetComponent<BettingMachineBehaviour>()).ToArray();
 
-        for (int i = 0; i < bettingMachines.Length; i++)
-        {
+        for (int i = 0; i < bettingMachines.Length; i++) {
             bettingMachines[i].minigameMngr = this;
             bettingMachines[i].machineIndex = i;
         }
@@ -47,13 +47,15 @@ public class MinigameMngr : MonoBehaviour
 
     private IEnumerator LoadSceneAsync(int machineIndex, string name, int newSceneIndex)
     {
+        if (name == "" || SceneManager.GetSceneByName(name) == null) {
+            yield break;
+        }
+
         bool isLoaded = false;
 
         AsyncOperation op = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
-        while (!isLoaded)
-        {
-            if (op.isDone)
-            {
+        while (!isLoaded) {
+            if (op.isDone) {
                 isLoaded = true;
                 loadedMinigameScenes[machineIndex] = SceneManager.GetSceneAt(newSceneIndex);
                 OnMinigameSceneLoaded(machineIndex);
@@ -70,11 +72,11 @@ public class MinigameMngr : MonoBehaviour
         bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 1);
 
         mainCamera.enabled = true;
-        
-        HideScene(machineIndex);
+
+        MoveSceneToHiddenLocation(machineIndex);
     }
 
-    private void HideScene(int machineIndex)
+    private void MoveSceneToHiddenLocation(int machineIndex)
     {
         GameObject[] rootObjects = loadedMinigameScenes[machineIndex].GetRootGameObjects();
         GameObject instance = Instantiate(minigameInstancePrefab);
@@ -87,6 +89,8 @@ public class MinigameMngr : MonoBehaviour
 
         float xOffset = -offsetOnLoad + (((offsetOnLoad * 2.0f) / bettingMachines.Length) * machineIndex);
         instance.transform.position = new Vector3(xOffset, -offsetOnLoad, offsetOnLoad);
+
+        instance.GetComponent<GameInstanceHandle>().brightnessModifier = brightnessModifier;
     }
 
     private Camera FindSceneCamera(Scene s)

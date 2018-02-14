@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33017255664669962}
   - component: {fileID: 64534551548220128}
   - component: {fileID: 23599769806069946}
-  - component: {fileID: 114553645244050394}
   m_Layer: 4
   m_Name: Plane
   m_TagString: Untagged
@@ -56,7 +55,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4113544176243826}
   - component: {fileID: 20726604040266428}
-  - component: {fileID: 114632720509947370}
   m_Layer: 8
   m_Name: MirrorCamera
   m_TagString: Untagged
@@ -460,30 +458,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114553645244050394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1008435757091592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68f274bfb97014a48b6d558ad5315804, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  portalCamera: {fileID: 114632720509947370}
---- !u!114 &114632720509947370
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1160672676865316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14337ab56dc9be94788a216949e5283e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraRig: {fileID: 0}
-  vrEye: {fileID: 0}
-  textureSize: 1024
-  renderAsMirror: 0

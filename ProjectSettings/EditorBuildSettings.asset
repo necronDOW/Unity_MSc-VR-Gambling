@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/VR_baked.unity
+    guid: 196a66be760a66c4d92e83f312972886
+  - enabled: 1
+    path: Assets/Dependencies/MSc_GamblingApp/3D/Scenes/gambling_tutorial.unity
+    guid: a1bd4d8835cf66340a7b19c82fa199a4

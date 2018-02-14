@@ -14,6 +14,7 @@ public class BettingMachineBehaviour : MonoBehaviour
 
     [SerializeField] private Material screenBaseMaterial;
     [SerializeField] private BM_Screen[] screens;
+    [SerializeField] private string sceneName = "";
     private bool isOn = false;
 
     private void Start()
@@ -21,7 +22,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         for (int i = 0; i < screens.Length; i++)
             screens[i].Setup(this, i, 1024, 1024, screenBaseMaterial);
         
-        //ToggleOn();
+        ToggleOn();
     }
 
     public void ToggleOn()
@@ -29,7 +30,7 @@ public class BettingMachineBehaviour : MonoBehaviour
         isOn = !isOn;
 
         if (isOn)
-            minigameMngr.LoadMinigame(machineIndex, "gambling_tutorial");
+            minigameMngr.LoadMinigame(machineIndex, sceneName);
         else minigameMngr.UnloadMinigame(machineIndex);
     }
 

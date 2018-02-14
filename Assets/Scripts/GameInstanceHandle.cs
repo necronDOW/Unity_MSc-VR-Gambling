@@ -8,6 +8,25 @@ using UnityEngine.EventSystems;
 public class GameInstanceHandle : MonoBehaviour
 {
     public int instanceIndex = -1;
+    public float brightnessModifier {
+        set {
+            if (sceneLights == null) {
+                sceneLights = GetComponentsInChildren<Light>();
+                sceneLightOriginalIntensity = new float[sceneLights.Length];
+
+                for (int i = 0; i < sceneLights.Length; i++) {
+                    sceneLightOriginalIntensity[i] = sceneLights[i].intensity;
+                }
+            }
+
+            for (int i = 0; i < sceneLights.Length; i++) {
+                sceneLights[i].intensity = sceneLightOriginalIntensity[i] * value;
+            }
+        }
+    }
+
+    private Light[] sceneLights;
+    private float[] sceneLightOriginalIntensity;
 
     public void Start()
     {
