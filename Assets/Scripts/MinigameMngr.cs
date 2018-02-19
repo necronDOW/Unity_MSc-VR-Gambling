@@ -1,16 +1,21 @@
 ﻿using System.Linq;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MinigameMngr : MonoBehaviour
 {
-    public GameObject minigameInstancePrefab;
+    [System.Serializable]
+    public struct SceneNameFovPair {
+        public string sceneName;
+        public float fieldOfView;
+    }
 
+    public GameObject minigameInstancePrefab;
     [SerializeField] private float offsetOnLoad = 1000;
     [SerializeField] private float brightnessModifier = 0.35f;
+    public SceneNameFovPair[] sceneNameFovPairs;
+
     private BettingMachineBehaviour[] bettingMachines;
     private Scene[] loadedMinigameScenes;
     //private Camera mainCamera;
@@ -69,6 +74,7 @@ public class MinigameMngr : MonoBehaviour
     {
         Camera gameSceneCamera = FindSceneCamera(loadedMinigameScenes[machineIndex]);
         gameSceneCamera.GetComponent<AudioListener>().enabled = false;
+
         bettingMachines[machineIndex].SetScreenFeed(gameSceneCamera, 1);
 
         //mainCamera.enabled = true;
@@ -90,18 +96,33 @@ public class MinigameMngr : MonoBehaviour
         float xOffset = -offsetOnLoad + (((offsetOnLoad * 2.0f) / bettingMachines.Length) * machineIndex);
         instance.transform.position = new Vector3(xOffset, -offsetOnLoad, offsetOnLoad);
 
-        instance.GetComponent<GameInstanceHandle>().brightnessModifier = brightnessModifier;
+        GameInstanceHandle gih = instance.GetComponent<GameInstanceHandle>();
+        gih.brightnessModifier = brightnessModifier;
+        gih.cameraFieldOfViewDefault = GetSceneDefaultFov(loadedMinigameScenes[machineIndex].name);
     }
 
     private Camera FindSceneCamera(Scene s)
     {
         GameObject[] rootObjects = s.GetRootGameObjects();
-        for (int i = 0; i < rootObjects.Length; i++)
-        {
+
+        for (int i = 0; i < rootObjects.Length; i++) {
             if (rootObjects[i].tag == "MainCamera")
                 return rootObjects[i].GetComponent<Camera>();
         }
 
         return null;
+    }
+
+    private float GetSceneDefaultFov(string name)
+    {
+        if (sceneNameFovPairs != null) {
+            for (int i = 0; i < sceneNameFovPairs.Length; i++) {
+                if (sceneNameFovPairs[i].sceneName == name && sceneNameFovPairs[i].fieldOfView != 0.0f) {
+                    return sceneNameFovPairs[i].fieldOfView;
+                }
+            }
+        }
+
+        return 60.0f;
     }
 }

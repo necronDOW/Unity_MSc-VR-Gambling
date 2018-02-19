@@ -1,7 +1,6 @@
 ﻿//#define USE_CALCULATION_VOLATILITY
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
 using FCD_RiggingTools;
 

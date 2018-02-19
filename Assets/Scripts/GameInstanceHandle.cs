@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class GameInstanceHandle : MonoBehaviour
 {
     public int instanceIndex = -1;
+    public float cameraFieldOfViewDefault;
+
+    private Light[] sceneLights;
+    private float[] sceneLightOriginalIntensity;
+    private Camera sceneMainCamera;
+
     public float brightnessModifier {
         set {
             if (sceneLights == null) {
@@ -25,9 +28,6 @@ public class GameInstanceHandle : MonoBehaviour
         }
     }
 
-    private Light[] sceneLights;
-    private float[] sceneLightOriginalIntensity;
-
     public void Start()
     {
         instanceIndex = IndexAmongstMatchingScenes();
@@ -36,6 +36,13 @@ public class GameInstanceHandle : MonoBehaviour
         if (eventSys) {
             eventSys.GetComponent<EventSystem>().enabled = false;
             eventSys.GetComponent<StandaloneInputModule>().enabled = false;
+        }
+
+        for (int i = 0; i < transform.childCount; i++) {
+            if (transform.GetChild(i).tag == "MainCamera") {
+                sceneMainCamera = transform.GetChild(i).GetComponent<Camera>();
+                sceneMainCamera.fieldOfView = cameraFieldOfViewDefault;
+            }
         }
     }
 
