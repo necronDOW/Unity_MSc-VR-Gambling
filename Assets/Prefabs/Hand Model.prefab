@@ -395,7 +395,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4957145994611426}
   - component: {fileID: 111062274553556620}
-  - component: {fileID: 114401145773618644}
   m_Layer: 0
   m_Name: Hand Model
   m_TagString: Untagged
@@ -913,7 +912,7 @@ Animation:
   m_Animations:
   - {fileID: 7400002, guid: 168ca3ccfe8938149a1dc4b13a48d337, type: 3}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &114322028323624116
@@ -928,18 +927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGizmos: 1
---- !u!114 &114401145773618644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1815642941185970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d67549415c61f3439dbb3c0c559c26f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLeftHand: 0
 --- !u!135 &135732093043771786
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -19,33 +19,41 @@ public class BettingMachineBehaviour : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < screens.Length; i++)
+        for (int i = 0; i < screens.Length; i++) {
             screens[i].Setup(this, i, 1024, 1024, screenBaseMaterial);
+        }
         
         ToggleOn();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        BM_Screen screen = collision.contacts[0].thisCollider.GetComponent<BM_Screen>();
+
+        if (screen && !screen.InteractionIsBlocked(collision)) {
+            screen.ProjectToMinigame(collision.contacts[0].point);
+            screen.AddToBlockedInteractions(collision);
+        }
     }
 
     public void ToggleOn()
     {
         isOn = !isOn;
 
-        if (isOn)
+        if (isOn) {
             minigameMngr.LoadMinigame(machineIndex, sceneName);
-        else minigameMngr.UnloadMinigame(machineIndex);
+        }
+        else {
+            minigameMngr.UnloadMinigame(machineIndex);
+        }
     }
 
     public void SetScreenFeed(Camera feed, int index)
     {
         screens[index].SetFeed(feed);
 
-        if (machineAudio)
+        if (machineAudio) {
             machineAudio.PopulateInputsRelativeToCamera(feed);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        BM_Screen screen = collision.contacts[0].thisCollider.GetComponent<BM_Screen>();
-        if (screen)
-            screen.ProjectToMinigame(collision.contacts[0].point);
+        }
     }
 }

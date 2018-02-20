@@ -21,7 +21,7 @@ public class EventHandle : MonoBehaviour
 
     public void Trigger()
     {
-        Debug.Log(gameObject.name + " event triggered.");
+        //Debug.Log(gameObject.name + " event triggered.");
         onTrigger.Invoke();
     }
 }

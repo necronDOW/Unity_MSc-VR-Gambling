@@ -2,92 +2,155 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandScript : MonoBehaviour
+public class HandScript : SteamVR_TrackedController
 {
-    private const float animationFinishSpeed = 5.0f;
+    //private const float animationFinishSpeed = 5.0f;
+    private const float defaultPlaySpeed = 4.0f;
 
     [System.Serializable]
-    public struct AnimationState
+    public struct AnimationPausePair
     {
         public AnimationClip clip;
-        public float pauseAfterSeconds;
+        public float pauseAfterTime;
     }
 
+    [SerializeField] private GameObject customModel;
     [SerializeField] private bool isLeftHand = false;
-    [SerializeField] private AnimationState[] animationStates;
+    [SerializeField] private AnimationPausePair[] animationPausePairs;
+    [SerializeField] private int triggerAnimationIndex = -1;
+    [SerializeField] private int grippedAnimationIndex = -1;
+    [SerializeField] private int triggerAndGrippedAnimationIndex = -1;
 
     private Animation animationComponent;
 
     private void Awake()
     {
-        if (isLeftHand) {
-            transform.localScale *= -1;
-            transform.rotation = Quaternion.Euler(
-                transform.eulerAngles.x, 
-                transform.eulerAngles.y - 180, 
-                transform.eulerAngles.z + 180);
-        }
+        if (customModel != null) {
+            customModel = Instantiate(customModel, transform);
 
-        animationComponent = GetComponent<Animation>();
-        if (animationComponent != null) {
-            for (int i = 0; i < animationStates.Length; i++) {
-                animationComponent.AddClip(animationStates[i].clip, animationStates[i].clip.name);
+            if (isLeftHand) {
+                customModel.transform.localScale *= -1;
+                customModel.transform.rotation = Quaternion.Euler(
+                    customModel.transform.eulerAngles.x,
+                    customModel.transform.eulerAngles.y - 180,
+                    customModel.transform.eulerAngles.z + 180);
             }
         }
-    }
 
-    // TODO: Remove - This is test code.
-    float timer = 0.0f;
-    public void Update()
-    {
-        timer += Time.deltaTime;
+        animationComponent = customModel.GetComponent<Animation>();
+        if (animationComponent != null) {
+            for (int i = 0; i < animationPausePairs.Length; i++) {
+                animationComponent.AddClip(animationPausePairs[i].clip, animationPausePairs[i].clip.name);
+            }
 
-        if (timer >= 5.0f) {
-            PlayAnimation(0);
-            timer = 0.0f;
+            if (animationPausePairs.Length >= 1 && animationPausePairs[0].clip != null) {
+                PlayAnimation(0, 0.1f);
+            }
+
+            TriggerClicked      += HandleTriggerPress;
+            Gripped             += HandleGripPress;
+
+            TriggerUnclicked    += HandleTriggerRelease;
+            Ungripped           += HandleGripRelease;
+        }
+        else {
+            Debug.LogWarning("No Animation Component found on " + gameObject.name + " or children. Animations will not play.");
         }
     }
 
-    public void PlayAnimation(int index)
+    private void OnValidate()
     {
-        if (animationComponent != null && index >= 0 && index < animationStates.Length) {
-            StartCoroutine(PlaySequence(animationStates[index]));
+        if (triggerAnimationIndex >= animationPausePairs.Length) {
+            triggerAnimationIndex = -1;
+        }
+
+        if (grippedAnimationIndex >= animationPausePairs.Length) {
+            grippedAnimationIndex = -1;
         }
     }
 
-    private IEnumerator PlaySequence(AnimationState animationState)
+    #region Hooks
+    private void HandleTriggerPress(object sender, ClickedEventArgs e)
     {
-        // Finish current animation quickly.
-        SetAnimationSpeed(animationFinishSpeed);
-        while (animationComponent.isPlaying) {
-            yield return null;
+        if (!gripped) PlayAnimation(triggerAnimationIndex);
+        else PlayAnimation(triggerAndGrippedAnimationIndex);
+    }
+    
+    private void HandleGripPress(object sender, ClickedEventArgs e)
+    {
+        if (!triggerPressed) PlayAnimation(grippedAnimationIndex);
+        else PlayAnimation(triggerAndGrippedAnimationIndex);
+    }
+
+    private void HandleTriggerRelease(object sender, ClickedEventArgs e)
+    {
+        if (!gripped) PlayAnimation(0);
+        else PlayAnimation(grippedAnimationIndex);
+    }
+
+    private void HandleGripRelease(object sender, ClickedEventArgs e)
+    {
+        if (!triggerPressed) PlayAnimation(0);
+        else PlayAnimation(triggerAnimationIndex);
+    }
+    #endregion
+
+    public void PlayAnimation(int index, float delay = 0.0f)
+    {
+        if (animationComponent != null && index >= 0 && index < animationPausePairs.Length && animationPausePairs[index].clip != null) {
+            StartCoroutine(PlaySequence(animationPausePairs[index], delay));
         }
+    }
+
+    private IEnumerator PlaySequence(AnimationPausePair animationPausePair, float delay = 0.0f)
+    {
+        if (delay > 0.0f) {
+            yield return new WaitForSeconds(delay);
+        }
+
+        //// Finish current animation quickly.
+        //SetAnimationSpeed(animationFinishSpeed);
+        //while (animationComponent.isPlaying) {
+        //    yield return null;
+        //}
 
         // Play new animation.
-        SetAnimationSpeed(1.0f);
-        animationComponent.clip = animationState.clip;
-        animationComponent.Play();
+        SetAnimationSpeed(defaultPlaySpeed);
+        //animationComponent.clip = animationPausePair.clip;
+        //animationComponent.Play();
+        animationComponent.CrossFade(animationPausePair.clip.name);
+        animationComponent.clip = animationPausePair.clip;
 
         // Start a pause sequence if necessary.
-        StartCoroutine(PauseSequence(animationState));
+        StartCoroutine(PauseSequence(animationPausePair));
 
         yield return null;
     }
 
-    private IEnumerator PauseSequence(AnimationState animationState)
+    private IEnumerator PauseSequence(AnimationPausePair animationPausePair)
     {
-        if (animationState.pauseAfterSeconds > 0.0f) {
-            yield return new WaitForSeconds(animationState.pauseAfterSeconds);
-            SetAnimationSpeed(0.0f);
+        while (GetAnimationTime(animationPausePair.clip.name) < animationPausePair.pauseAfterTime) {
+            yield return null;
         }
 
+        SetAnimationSpeed(0.0f);
         yield return null;
     }
 
     private void SetAnimationSpeed(float value)
     {
-        foreach (UnityEngine.AnimationState state in animationComponent) {
+        foreach (AnimationState state in animationComponent) {
             state.speed = value;
         }
+    }
+
+    private float GetAnimationTime(string name)
+    {
+        foreach (AnimationState state in animationComponent) {
+            if (state.name == name)
+                return state.time;
+        }
+
+        return 1.0f;
     }
 }

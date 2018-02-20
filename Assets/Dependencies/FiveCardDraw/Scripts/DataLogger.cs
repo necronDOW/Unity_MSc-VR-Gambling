@@ -34,7 +34,7 @@ public class DataLogger
             return;
         
         string logsDirectory = Application.persistentDataPath + "/" + logsFolderName + "/ ";
-        Debug.Log(logsDirectory);
+        //Debug.Log(logsDirectory);
 
         if (!Directory.Exists(logsDirectory))
             Directory.CreateDirectory(logsDirectory);
