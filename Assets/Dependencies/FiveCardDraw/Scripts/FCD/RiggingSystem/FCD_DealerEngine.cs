@@ -1,4 +1,4 @@
-﻿//#define USE_CALCULATION_VOLATILITY
+﻿#define USE_CALCULATION_VOLATILITY
 
 using System;
 using System.Collections.Generic;

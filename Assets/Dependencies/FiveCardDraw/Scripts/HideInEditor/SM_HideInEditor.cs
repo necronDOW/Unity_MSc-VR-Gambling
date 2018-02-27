@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using System.Collections;
 using System.Collections.Generic;
 
@@ -44,8 +46,9 @@ public class SM_HideInEditor : MonoBehaviour
         foreach (HideInEditor h in hideScripts) {
             h.OverrideHidden(true);
         }
-
+#if UNITY_EDITOR
         EditorApplication.playmodeStateChanged = UpdateHidden;
+#endif
     }
 
     private void Update()

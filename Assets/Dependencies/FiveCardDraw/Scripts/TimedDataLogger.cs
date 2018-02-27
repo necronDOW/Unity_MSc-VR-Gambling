@@ -33,7 +33,7 @@ public class TimedDataLogger : DataLogger
             return;
 
         if (!firstLogOccured) {
-            lastLogSeconds = Time.realtimeSinceStartup;
+            OverrideLastRecordedTime();
             firstLogOccured = true;
         }
 
@@ -45,6 +45,11 @@ public class TimedDataLogger : DataLogger
         }
 
         nextOutput += "  " + UniqueLogID(logID) + "(" + appendMathSymbol + string.Format("{0:f10}s", timeSinceLastLog) + ") " + label + "\r\n";
+        OverrideLastRecordedTime();
+    }
+
+    public void OverrideLastRecordedTime()
+    {
         lastLogSeconds = Time.realtimeSinceStartup;
     }
 

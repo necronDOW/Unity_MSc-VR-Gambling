@@ -58,6 +58,8 @@ public class FCD_CardBehaviour : HL_CardBehaviour
         if (this.CardValue % FCD_Deck.valueCount == 12) {
             PlayShimmer(true);
         }
+
+        TimedDataLogger.Get().OverrideLastRecordedTime();
     }
 
     public void TriggerAnimatorReset()

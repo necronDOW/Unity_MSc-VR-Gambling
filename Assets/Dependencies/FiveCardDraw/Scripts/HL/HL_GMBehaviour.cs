@@ -56,8 +56,11 @@ public class HL_GMBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<HL_CardBehaviour>()) {
+        HL_CardBehaviour cardBehaviour = other.GetComponent<HL_CardBehaviour>();
+        if (cardBehaviour != null) {
             spawningEnabled = true;
+
+            TimedDataLogger.Get().AddToLog("HL Card Shown (value=" + FCD_Deck.TranslateValue(cardBehaviour.CardValue) + ")", "hl_cardvalue");
 
             if (cardSpawner.spawnedCount > 1)
                 evaluating = true;
@@ -71,6 +74,8 @@ public class HL_GMBehaviour : MonoBehaviour
             return;
 
         if (CanDeal()) {
+            TimedDataLogger.Get().AddToLog("HL Deal (choice=" + (userChoiceHigher ? "higher)" : "lower)"), "hl_deal");
+
             SetButtonsEnabled(false);
 
             float potentialWalletOutcome = walletScript.wallet + (walletScript.potScript.potTotal * 2); /* This line accounts for the result of a hi-low win (i.e. doubling 
@@ -95,6 +100,12 @@ public class HL_GMBehaviour : MonoBehaviour
     public void ExitGame(bool collectPot = true)
     {
         if (!evaluating) {
+            if (collectPot) {
+                TimedDataLogger.Get().AddToLog("Collected " + string.Format("£{0:f2}", walletScript.potScript.potTotal), "hl_collect");
+            }
+            
+            TimedDataLogger.Get().Log("HL Done");
+
             walletScript.EmptyPot(collectPot);
 
             if (animatorInterface) {
