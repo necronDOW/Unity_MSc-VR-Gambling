@@ -10,6 +10,7 @@ public class BM_Screen : MonoBehaviour
     private BettingMachineBehaviour linkedMachine;
     private RenderTexture screenTexture;
     private List<GameObject> blockedInteractions;
+    private List<GameObject> removeObjects = new List<GameObject>();
 
     private void Update()
     {
@@ -17,10 +18,25 @@ public class BM_Screen : MonoBehaviour
             RaycastHit info;
             if (Physics.Raycast(g.transform.position, transform.forward, out info, 5.0f)) {
                 if (info.collider.gameObject == gameObject && info.distance > minInteractionsDistance) {
-                    blockedInteractions.Remove(g);
+                    removeObjects.Add(g);
                 }
             }
         }
+
+        for (int i = 0; i < removeObjects.Count; i++) {
+            blockedInteractions.Remove(removeObjects[i]);
+        }
+
+        removeObjects.Clear();
+
+        //foreach (GameObject g in blockedInteractions) {
+        //    RaycastHit info;
+        //    if (Physics.Raycast(g.transform.position, transform.forward, out info, 5.0f)) {
+        //        if (info.collider.gameObject == gameObject && info.distance > minInteractionsDistance) {
+        //            blockedInteractions.Remove(g);
+        //        }
+        //    }
+        //}
     }
     
     public void Setup(BettingMachineBehaviour linkedMachine, int screenIndex, int width, int height, Material baseMaterial)
