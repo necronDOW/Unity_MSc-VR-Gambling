@@ -68,6 +68,8 @@ public class FCD_WalletScript : MonoBehaviour
 
     public void CashOutConfirmed()
     {
-        Debug.Log("cashed out.");
+        TimedDataLogger.Get().AddToLog("Cashed Out");
+        TimedDataLogger.Get().Log("Cashed Out");
+        Application.Quit();
     }
 }

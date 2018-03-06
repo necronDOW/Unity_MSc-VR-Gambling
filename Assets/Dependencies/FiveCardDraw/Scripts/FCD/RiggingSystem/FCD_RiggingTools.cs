@@ -18,8 +18,8 @@ namespace FCD_RiggingTools
     }
     public static class Globals
     {
-        public const string winSequencePath = "Assets/Dependencies/FiveCardDraw/Resources/initial_seq_w.hands";
-        public const string loseSequencePath = "Assets/Dependencies/FiveCardDraw/Resources/initial_seq_l.hands";
+        public const string winSequencePath = "initial_seq_w";
+        public const string loseSequencePath = "initial_seq_l";
         public const float betAmount = 1.0f;
 
         public static readonly int[] returnsPercentages = { 100, 200, 300, 400, 600, 900, 2500, 5000, 25000 };

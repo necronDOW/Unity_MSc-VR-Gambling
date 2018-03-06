@@ -99,7 +99,9 @@ public class HL_GMBehaviour : MonoBehaviour
 
     public void ExitGame(bool collectPot = true)
     {
-        if (!evaluating) {
+        if (!evaluating && spawningEnabled) {
+            spawningEnabled = false;
+
             if (collectPot) {
                 TimedDataLogger.Get().AddToLog("Collected " + string.Format("£{0:f2}", walletScript.potScript.potTotal), "hl_collect");
             }

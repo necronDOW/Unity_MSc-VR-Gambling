@@ -42,7 +42,7 @@ public class HL_CardSpawner : MonoBehaviour
         int minRange = higher ? lastCardValue + 1 : 0;
         int maxRange = higher ? FCD_Deck.valueCount : lastCardValue;
 
-        return lastCardValue = (Random.Range(minRange, maxRange * 1000) / 1000);
+        return lastCardValue = (Random.Range(minRange, maxRange));
     }
 
     public int SpawnCard(bool higher)

@@ -7,10 +7,11 @@ public class CSVReader
     public static bool ReadFromFile(string dir, out int[] arr)
     {
         string[] strData;
-        if (!ReadFromFile(dir, out strData))
-        {
-            arr = new int[1] { -1 };
-            return false;
+        if (!ReadFromResources(dir, out strData)) {
+            if (!ReadFromFile(dir, out strData)) {
+                arr = new int[1] { -1 };
+                return false;
+            }
         }
 
         arr = new int[strData.Length];
@@ -25,8 +26,7 @@ public class CSVReader
 
     public static bool ReadFromFile(string dir, out string[] arr)
     {
-        if (!File.Exists(dir))
-        {
+        if (!File.Exists(dir)) {
             arr = new string[1] { "NULL" };
             return false;
         }
@@ -34,6 +34,18 @@ public class CSVReader
         string rawText = File.ReadAllText(dir);
         arr = rawText.Split(',', '\n');
 
+        return true;
+    }
+
+    public static bool ReadFromResources(string path, out string[] arr)
+    {
+        TextAsset rawText = Resources.Load(path) as TextAsset;
+        if (rawText == null) {
+            arr = new string[1] { "NULL" };
+            return false;
+        }
+
+        arr = rawText.text.Split(',', '\n');
         return true;
     }
 }

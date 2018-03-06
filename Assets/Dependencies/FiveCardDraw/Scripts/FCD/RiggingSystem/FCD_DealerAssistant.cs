@@ -153,10 +153,17 @@ class FCD_DealerAssistant
 
     private Sequence[] GenerateSequences(string filePath)
     {
-        if (!File.Exists(filePath))
-            return null;
+        string[] allLines;
+        UnityEngine.TextAsset textAsset = UnityEngine.Resources.Load(filePath) as UnityEngine.TextAsset;
 
-        string[] allLines = File.ReadAllLines(filePath);
+        if (textAsset) {
+            allLines = textAsset.text.Split('\n');
+        }
+        else if (File.Exists(filePath)) {
+            allLines = File.ReadAllLines(filePath);
+        }
+        else return null;
+
         List<Sequence> foundSequences = new List<Sequence>();
 
         for (int start = 0; start < allLines.Length; start++) {
