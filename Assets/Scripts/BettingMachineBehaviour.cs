@@ -1,9 +1,5 @@
-﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class BettingMachineBehaviour : MonoBehaviour
 {
@@ -33,6 +29,11 @@ public class BettingMachineBehaviour : MonoBehaviour
         if (screen && !screen.InteractionIsBlocked(collision)) {
             screen.ProjectToMinigame(collision.contacts[0].point);
             screen.AddToBlockedInteractions(collision);
+
+            SteamVR_TrackedObject controller = collision.gameObject.GetComponent<SteamVR_TrackedObject>();
+            if (controller != null) {
+                StartCoroutine(ControllerRumble((int)controller.index, 0.1f));
+            }
         }
     }
 
@@ -55,5 +56,18 @@ public class BettingMachineBehaviour : MonoBehaviour
         if (machineAudio) {
             machineAudio.PopulateInputsRelativeToCamera(feed);
         }
+    }
+
+    private IEnumerator ControllerRumble(int controllerIndex, float duration, ushort strength = 3999)
+    {
+        strength = (ushort)Mathf.Clamp(strength, 1, 3999);
+
+        while (duration > 0) {
+            duration -= Time.deltaTime;
+            SteamVR_Controller.Input(controllerIndex).TriggerHapticPulse(strength);
+            yield return null;
+        }
+
+        yield return null;
     }
 }

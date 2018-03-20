@@ -4,21 +4,35 @@ using UnityEngine;
 
 public class BM_Screen : MonoBehaviour
 {
+    struct BlockedKey
+    {
+        public GameObject rigidBody { get; private set; }
+        public GameObject collider { get; private set; }
+
+        public BlockedKey(Rigidbody parent, Collision collision)
+        {
+            rigidBody = parent.gameObject;
+            collider = collision.collider.gameObject;
+        }
+
+        public Vector3 position { get { return collider.transform.position; } }
+    };
+
     private const float minInteractionsDistance = 0.1f;
 
     [SerializeField] private Camera feed;
     private BettingMachineBehaviour linkedMachine;
     private RenderTexture screenTexture;
-    private List<GameObject> blockedInteractions;
-    private List<GameObject> removeObjects = new List<GameObject>();
+    private List<BlockedKey> blockedInteractions;
+    private List<BlockedKey> removeObjects = new List<BlockedKey>();
 
     private void Update()
     {
-        foreach (GameObject g in blockedInteractions) {
+        foreach (BlockedKey bk in blockedInteractions) {
             RaycastHit info;
-            if (Physics.Raycast(g.transform.position, transform.forward, out info, 5.0f)) {
+            if (Physics.Raycast(bk.position, transform.forward, out info, 5.0f)) {
                 if (info.collider.gameObject == gameObject && info.distance > minInteractionsDistance) {
-                    removeObjects.Add(g);
+                    removeObjects.Add(bk);
                 }
             }
         }
@@ -48,7 +62,7 @@ public class BM_Screen : MonoBehaviour
         m.mainTexture = screenTexture;
         m.color = Color.white;
 
-        blockedInteractions = new List<GameObject>();
+        blockedInteractions = new List<BlockedKey>();
 
         GetComponent<MeshRenderer>().material = m;
     }
@@ -75,20 +89,24 @@ public class BM_Screen : MonoBehaviour
 
     public void AddToBlockedInteractions(Collision collisionInfo)
     {
-        if (!blockedInteractions.Contains(collisionInfo.gameObject)) {
-            blockedInteractions.Add(collisionInfo.gameObject);
+        if (!InteractionIsBlocked(collisionInfo)) {
+            blockedInteractions.Add(new BlockedKey(collisionInfo.rigidbody, collisionInfo));
         }
     }
 
     public bool InteractionIsBlocked(Collision collisionInfo)
     {
-        foreach (GameObject g in blockedInteractions) {
-            if (g == collisionInfo.gameObject) {
-                return true;
-            }
+        return FindInBlockedInteractions(collisionInfo.rigidbody.gameObject) != -1;
+    }
+
+    private int FindInBlockedInteractions(GameObject rigidBodyGameObject)
+    {
+        for (int i = 0; i < blockedInteractions.Count; i++) {
+            if (blockedInteractions[i].rigidBody == rigidBodyGameObject)
+                return i;
         }
 
-        return false;
+        return -1;
     }
 
     private Vector3 ImpactPoint(Vector3 hitPoint)
