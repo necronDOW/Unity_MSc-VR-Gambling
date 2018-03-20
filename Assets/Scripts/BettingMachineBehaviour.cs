@@ -24,15 +24,19 @@ public class BettingMachineBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!collision.collider.gameObject.GetComponent<ScreenInteractionPoint>()) {
+            return;
+        }
+
         BM_Screen screen = collision.contacts[0].thisCollider.GetComponent<BM_Screen>();
 
         if (screen && !screen.InteractionIsBlocked(collision)) {
             screen.ProjectToMinigame(collision.contacts[0].point);
             screen.AddToBlockedInteractions(collision);
 
-            SteamVR_TrackedObject controller = collision.gameObject.GetComponent<SteamVR_TrackedObject>();
+            SteamVR_TrackedObject controller = collision.gameObject.GetComponentInParent<SteamVR_TrackedObject>();
             if (controller != null) {
-                StartCoroutine(ControllerRumble((int)controller.index, 0.1f));
+                StartCoroutine(ControllerRumble((int)controller.index, 0.05f, 2000));
             }
         }
     }

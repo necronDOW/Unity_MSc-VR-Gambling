@@ -9,9 +9,9 @@ public class BM_Screen : MonoBehaviour
         public GameObject rigidBody { get; private set; }
         public GameObject collider { get; private set; }
 
-        public BlockedKey(Rigidbody parent, Collision collision)
+        public BlockedKey(Collision collision)
         {
-            rigidBody = parent.gameObject;
+            rigidBody = collision.gameObject;
             collider = collision.collider.gameObject;
         }
 
@@ -90,13 +90,13 @@ public class BM_Screen : MonoBehaviour
     public void AddToBlockedInteractions(Collision collisionInfo)
     {
         if (!InteractionIsBlocked(collisionInfo)) {
-            blockedInteractions.Add(new BlockedKey(collisionInfo.rigidbody, collisionInfo));
+            blockedInteractions.Add(new BlockedKey(collisionInfo));
         }
     }
 
     public bool InteractionIsBlocked(Collision collisionInfo)
     {
-        return FindInBlockedInteractions(collisionInfo.rigidbody.gameObject) != -1;
+        return FindInBlockedInteractions(collisionInfo.gameObject) != -1;
     }
 
     private int FindInBlockedInteractions(GameObject rigidBodyGameObject)

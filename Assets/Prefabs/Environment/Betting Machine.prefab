@@ -162,9 +162,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1366912242690742}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalScale: {x: 3.500002, y: 3.5, z: 3.500002}
   m_Children:
   - {fileID: 4045158933326530}
   - {fileID: 4664111600302270}
@@ -368,7 +368,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.001}
+  m_Size: {x: 1, y: 1, z: 0.0005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65398011193633122
 BoxCollider:
@@ -380,7 +380,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.001}
+  m_Size: {x: 1, y: 1, z: 0.0005}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108633223666798974
 Light:
@@ -449,6 +449,7 @@ MonoBehaviour:
   screens:
   - {fileID: 114286800353437838}
   - {fileID: 114800232966159394}
+  sceneName: FiveCardDraw
 --- !u!114 &114800232966159394
 MonoBehaviour:
   m_ObjectHideFlags: 1
