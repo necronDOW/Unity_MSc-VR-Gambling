@@ -121,6 +121,7 @@ public class HL_GMBehaviour : MonoBehaviour
 
             if (sceneManager) {
                 dealerBehaviour.ResetCards();
+                dealerBehaviour.CheckGameOver();
                 sceneManager.SwitchScene(0, SceneManager_v2.TransitionMode.Lerp, 0.0f, SceneManager_v2.DisableMode.PostTransition);
             }
         }

@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walletScript: {fileID: 241886622}
+  gameOverScript: {fileID: 0}
   hl_GameMasterBehaviour: {fileID: 112197981}
   sceneManager: {fileID: 742959065}
   holdButtonGroup: {fileID: 651158521}
@@ -660,7 +661,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114761875353506508, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
@@ -1133,7 +1134,7 @@ Prefab:
     - target: {fileID: 23891026581544016, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114785927836457556, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
@@ -1327,7 +1328,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4101027774611538, guid: fb1f3d80df4def64faed40d191483b48, type: 2}
       propertyPath: m_LocalScale.x
@@ -5275,7 +5276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1780323608
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6281,13 +6282,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1992641207}
+  - component: {fileID: 1992641208}
   m_Layer: 5
   m_Name: HUD_GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1992641207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6309,6 +6311,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1992641208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992641206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59926c4b1ec867b4992ca0f6ffc51c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalBalanceText: {fileID: 1660795358}
 --- !u!1 &2043075750 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1542746672212500, guid: d4700ff77e809294c9390cbf7017262f,

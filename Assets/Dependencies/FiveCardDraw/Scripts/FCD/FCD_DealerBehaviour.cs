@@ -7,6 +7,7 @@ using UnityEngine;
 public class FCD_DealerBehaviour : MonoBehaviour
 {
     [SerializeField] private FCD_WalletScript walletScript;
+    [SerializeField] private FCD_GameOver gameOverScript;
     [SerializeField] private HL_GMBehaviour hl_GameMasterBehaviour;
     [SerializeField] private SceneManager_v2 sceneManager;
     [SerializeField] private FCD_ButtonGroup holdButtonGroup;
@@ -21,6 +22,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
     private bool isTiming = false;
     private float playTimer = 0.0f;
     private bool isSwitchingToHiLo = false;
+    private bool gameOver = false;
 
 #if RUN_DEBUG_SIMULATION
     private const int maxSimHold = 3;
@@ -48,6 +50,11 @@ public class FCD_DealerBehaviour : MonoBehaviour
     {
         if (isTiming)
             playTimer += Time.deltaTime;
+
+        if (gameOver && !sceneManager.switchingScenes) {
+            gameOverScript.TriggerGameOver(walletScript);
+            gameOver = false;
+        }
     }
 
     private void OnApplicationQuit()
@@ -170,6 +177,9 @@ public class FCD_DealerBehaviour : MonoBehaviour
                 if (tracker)
                     tracker.SetTrackingOverride(true);
             }
+            else {
+                CheckGameOver(1.5f);
+            }
         }
     }
 #endif
@@ -280,5 +290,20 @@ public class FCD_DealerBehaviour : MonoBehaviour
             StartCoroutine(FX_AnimatorInterface.PlayAnimatorInterfaceAfterSeconds(delay, animatorInterface));
             sceneManager.SwitchScene(1, SceneManager_v2.TransitionMode.Lerp, delay, SceneManager_v2.DisableMode.PostTransition);
         }
+    }
+
+    public void CheckGameOver(float delay = 0.0f)
+    {
+        if (!engine.canDrawNewHand) {
+            if (delay > 0.0f)
+                StartCoroutine(SetGameOver_delayed(delay));
+            else gameOver = true;
+        }
+    }
+
+    private IEnumerator SetGameOver_delayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        gameOver = true;
     }
 }
