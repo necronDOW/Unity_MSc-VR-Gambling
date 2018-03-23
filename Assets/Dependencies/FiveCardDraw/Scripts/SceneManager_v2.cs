@@ -146,7 +146,7 @@ public class SceneManager_v2 : MonoBehaviour
 
         switch (nextTransition) {
             case TransitionMode.Lerp:
-                StartCoroutine(QuadraticLerpCamera(scenes[nextIndex], 2.0f));
+                StartCoroutine(QuadraticLerpCamera(scenes[nextIndex], 1.0f));
                 break;
             case TransitionMode.Instant:
             default:

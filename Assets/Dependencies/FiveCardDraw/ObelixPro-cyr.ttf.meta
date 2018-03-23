@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 34bb8c59f3e01854fbe322df7dc12038
-timeCreated: 1516581028
+timeCreated: 1521815715
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -12,7 +12,8 @@ TrueTypeFontImporter:
   fontName: ObelixPro
   fontNames:
   - ObelixPro
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 384681bbf40bcf94babf0f877d2673fe, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
