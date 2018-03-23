@@ -12,6 +12,8 @@ public class HL_CardSpawner : MonoBehaviour
     public int spawnedCount { get { return transform.childCount; } }
     public int lastCardValue { get; private set; }
 
+    public int valueRangeModifier = 4;
+
     private void OnEnable()
     {
         ResetSpawner(true);
@@ -39,8 +41,15 @@ public class HL_CardSpawner : MonoBehaviour
         if ((higher && lastCardValue + 1 >= FCD_Deck.valueCount) || (!higher && lastCardValue == 0))
             higher = !higher;
 
-        int minRange = higher ? lastCardValue + 1 : 0;
-        int maxRange = higher ? FCD_Deck.valueCount : lastCardValue;
+        int minRange, maxRange;
+
+        if (spawnedCount == 1) {
+            minRange = valueRangeModifier;
+            maxRange = FCD_Deck.valueCount - valueRangeModifier;
+        } else {
+            minRange = higher ? lastCardValue + 1 : 0;
+            maxRange = higher ? FCD_Deck.valueCount : lastCardValue;
+        }
 
         return lastCardValue = (Random.Range(minRange, maxRange));
     }

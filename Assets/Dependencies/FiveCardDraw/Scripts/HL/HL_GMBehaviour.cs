@@ -25,6 +25,11 @@ public class HL_GMBehaviour : MonoBehaviour
     private bool spawningEnabled = false;
     private bool evaluating = false;
     private float evaluateTimer = 0.0f;
+    private int turn = 0;
+    private const int maxTurns = 1;
+
+    private bool exit = false;
+    private float exitTime = 0.0f;
 
     private void Awake()
     {
@@ -34,6 +39,14 @@ public class HL_GMBehaviour : MonoBehaviour
 
     private void Update()
     {
+        if (exit) {
+            exitTime -= Time.deltaTime;
+            if (exitTime <= 0.0f) {
+                ExitGame(dealResult);
+            }
+            return;
+        }
+
         if (evaluating) {
             evaluateTimer += Time.deltaTime;
             if (evaluateTimer >= 0.5f) {
@@ -49,6 +62,11 @@ public class HL_GMBehaviour : MonoBehaviour
                 }
                 else {
                     ExitGame(false);
+                }
+
+                if (turn >= maxTurns) {
+                    exit = true;
+                    exitTime = 0.1f;
                 }
             }
         }
@@ -70,10 +88,12 @@ public class HL_GMBehaviour : MonoBehaviour
     // This should be called before the engines turn has been incremented.
     public void DealCard(bool userChoiceHigher)
     {
-        if (sceneManager && sceneManager.switchingScenes)
+        if ((sceneManager && sceneManager.switchingScenes) || exit)
             return;
 
         if (CanDeal()) {
+            turn++;
+
             TimedDataLogger.Get().AddToLog("HL Deal (choice=" + (userChoiceHigher ? "higher)" : "lower)"), "hl_deal");
 
             SetButtonsEnabled(false);
@@ -120,6 +140,10 @@ public class HL_GMBehaviour : MonoBehaviour
             }
 
             if (sceneManager) {
+                turn = 0;
+                exit = false;
+                exitTime = 0.0f;
+
                 dealerBehaviour.ResetCards();
                 dealerBehaviour.CheckGameOver();
                 sceneManager.SwitchScene(0, SceneManager_v2.TransitionMode.Lerp, 0.0f, SceneManager_v2.DisableMode.PostTransition);
@@ -136,6 +160,6 @@ public class HL_GMBehaviour : MonoBehaviour
 
     private bool CanDeal()
     {
-        return cardSpawner && engineInPlay != null && walletScript && !evaluating && spawningEnabled;
+        return turn < maxTurns && cardSpawner && engineInPlay != null && walletScript && !evaluating && spawningEnabled;
     }
 }
