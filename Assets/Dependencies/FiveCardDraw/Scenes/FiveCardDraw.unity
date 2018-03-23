@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.46595466, g: 0.5158631, b: 0.5865865, a: 1}
+  m_IndirectSpecularColor: {r: 0.18387133, g: 0.22901875, b: 0.3031144, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -77,15 +77,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 6ba632ddf58f4094c9b6943b072576f3,
     type: 2}
   m_UseShadowmask: 1
@@ -660,7 +662,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114761875353506508, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
@@ -1133,7 +1135,7 @@ Prefab:
     - target: {fileID: 23891026581544016, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114785927836457556, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
@@ -1327,7 +1329,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101027774611538, guid: fb1f3d80df4def64faed40d191483b48, type: 2}
       propertyPath: m_LocalScale.x
@@ -2701,6 +2703,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 343063909}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &821733593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3085,6 +3104,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 313501373}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1042500966 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1966600336442204, guid: d4700ff77e809294c9390cbf7017262f,
@@ -3953,6 +3989,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 307843575}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1001 &1293524713
 Prefab:
   m_ObjectHideFlags: 0
@@ -4882,6 +4935,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 763802941}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1597560039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5222,6 +5292,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 655695788}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &1780323607
 GameObject:
   m_ObjectHideFlags: 0
@@ -5360,6 +5447,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 656949140}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1788149653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5496,6 +5600,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 740323793}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1794401634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5953,6 +6074,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 366539180}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &1938993648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6169,6 +6307,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2b9b45a5e84349a81bb8367c5c04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableCanvasInput: 1
+  onTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1975038471}
+        m_MethodName: Trigger
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &2043075750 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1542746672212500, guid: d4700ff77e809294c9390cbf7017262f,
