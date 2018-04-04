@@ -171,14 +171,14 @@ public class FCD_DealerBehaviour : MonoBehaviour
 
             // Switch to Hi-Lo game
             if (engine.handWasWin) {
-                SwitchToHiLow(2.5f);
+                SwitchToHiLow(1.875f);
 
                 FCD_AnimationTracker tracker = GetComponent<FCD_AnimationTracker>();
                 if (tracker)
                     tracker.SetTrackingOverride(true);
             }
             else {
-                CheckGameOver(1.5f);
+                CheckGameOver(1.125f);
             }
         }
     }

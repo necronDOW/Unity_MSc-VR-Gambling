@@ -62,6 +62,9 @@ class FCD_RiggingSystem
         int indexer = 0;
         int[] addedCards = SmartArrayInit(requiredCount);
 
+        if (addedCards == null)
+            return null;
+
         for (int checkIndex = 0; indexer < addedCards.Length && checkIndex < probability.associatedCards.Length;)
         {
             int varience = probability.associatedCards[checkIndex].simplifiedValue - lastValue;

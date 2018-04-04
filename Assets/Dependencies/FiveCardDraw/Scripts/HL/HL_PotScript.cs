@@ -38,7 +38,7 @@ public class HL_PotScript : MonoBehaviour
     public void EmptyPot(FCD_WalletScript targetWallet)
     {
         if (targetWallet)
-            StartCoroutine(EmptyPot_Coroutine_Positive(1.5f, targetWallet));
+            StartCoroutine(EmptyPot_Coroutine_Positive(1.125f, targetWallet));
         else {
             if (smokePrefab) {
                 GameObject.Instantiate(smokePrefab, transform.position, transform.rotation, transform.parent);

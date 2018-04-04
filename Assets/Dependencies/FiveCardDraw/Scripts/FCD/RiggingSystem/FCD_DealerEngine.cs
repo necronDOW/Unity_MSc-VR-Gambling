@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using FCD_RiggingTools;
+using HT = FCD_RiggingTools.HandType;
 
 class FCD_DealerEngine
 {
@@ -172,6 +173,23 @@ class FCD_DealerEngine
     //    return false;
     //}
     
+    private void RemoveProbabilityIfTypesComplete(HT removeType, FCD_ProbabilitySystem.Probability[] probabilities, ref List<int> probableIndices, params HT[] searchTypes)
+    {
+        foreach (HT t in searchTypes) {
+            foreach (int index in probableIndices) {
+                if (probabilities[index].type == t && probabilities[index].requiredCount == 0) {
+                    for (int i = 0; i < probableIndices.Count; i++) {
+                        if (probabilities[probableIndices[i]].type == removeType) {
+                            UnityEngine.Debug.Log("Removed: " + removeType);
+                            probableIndices.RemoveAt(i);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public void CompleteRiggedHand()
     {
         winningValues = null;
@@ -210,7 +228,7 @@ class FCD_DealerEngine
             // IMPORTANT: This code filters out probably indices which would require the removal of cards to achieve (e.g. if the player holds a two pair, it won't result in anything less).
             //int highestProbabilityWithZeroRequired = -1;
             //for (int i = 0; i < probableIndices.Count; i++) {
-            //    UnityEngine.Debug.Log("Required for " + (HandType)probableIndices[i] + ": " + probabilities[probableIndices[i]].requiredCount);
+            //    UnityEngine.Debug.Log("Required for " + (removeType)probableIndices[i] + ": " + probabilities[probableIndices[i]].requiredCount);
             //    if (probabilities[probableIndices[i]].requiredCount == 0) {
             //        highestProbabilityWithZeroRequired = i;
             //    }
@@ -222,15 +240,26 @@ class FCD_DealerEngine
             //}
             #endregion
             #region filter
-            // IMPORTANT: This code filters out FacePairs as a probability if a Pair of non-face cards exists.
-            if (probableIndices.Count >= 2 && (probableIndices[0] == 0 && probableIndices[1] == 1)) {
-                int requiredForTwoPair = probabilities[probableIndices[1]].requiredCount;
-                int requiredForNonFacePair = FCD_ProbabilitySystem.GetRequiredForNonFacePair(hand.currentHand.ToArray()).requiredCount;
+            // IMPORTANT: Filters out all probabilities if a better hand exists which already contains the probability set. Full list of exclusions:
+            //      
+            //     |REMOVE:        |IF EXISTS: |1:             |2:             |3:             |4:              |
+            //     |---------------|-----------|---------------|---------------|---------------|----------------|
+            //     |FacePair       |           |FourOfAKind*   |FullHouse*     |ThreeOfAKind   |TwoPair         |
+            //     |TwoPair        |           |FullHouse      |               |               |                |
+            //     |ThreeOfAKind   |           |FourOfAKind    |FullHouse      |TwoPair^       |                |
+            //     |Straight       |           |StraightFlush  |               |               |                |
+            //     |Flush          |           |StraightFlush  |               |               |                |
+            //     |StraightFlush  |           |RoyalFlush     |               |               |                |
+            //
+            //      * = Filter ignored as the type* contains other types in the same check-case.
+            //      ^ = Outlier-case where rigging for the removal type given type^ exists would cause issues.
 
-                if (requiredForTwoPair == 0 || requiredForNonFacePair == 0) {
-                    probableIndices.Remove(0);
-                }
-            }
+            RemoveProbabilityIfTypesComplete(HT.FacePair, probabilities, ref probableIndices, HT.TwoPair, HT.ThreeOfAKind);
+            RemoveProbabilityIfTypesComplete(HT.TwoPair, probabilities, ref probableIndices, HT.FullHouse);
+            RemoveProbabilityIfTypesComplete(HT.ThreeOfAKind, probabilities, ref probableIndices, HT.FourOfAKind, HT.FullHouse, HT.TwoPair);
+            RemoveProbabilityIfTypesComplete(HT.Straight, probabilities, ref probableIndices, HT.StraightFlush);
+            RemoveProbabilityIfTypesComplete(HT.Flush, probabilities, ref probableIndices, HT.StraightFlush);
+            RemoveProbabilityIfTypesComplete(HT.StraightFlush, probabilities, ref probableIndices, HT.RoyalFlush);
             #endregion
 
             if (probableIndices.Count != 0) {
@@ -241,7 +270,7 @@ class FCD_DealerEngine
                                                                                               target index (i.e. if 2 is desired, rand(0, 2)). */
 #endif
 
-                addedCards = FCD_RiggingSystem.RigForHandType((HandType)selectedIndex, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
+                addedCards = FCD_RiggingSystem.RigForHandType((HT)selectedIndex, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
 
                 float winnings = Globals.betAmount * (Globals.returnsPercentages[selectedIndex] * 0.01f);
                 
@@ -252,7 +281,7 @@ class FCD_DealerEngine
                     walletScript.wallet += winnings;
                 }
 
-                DataLogger.Get().AddToLog("Outcome", "" + (HandType)selectedIndex);
+                DataLogger.Get().AddToLog("Outcome", "" + (HT)selectedIndex);
                 DataLogger.Get().AddToLog("Profit", string.Format("£{0:f2}", winnings - Globals.betAmount));
 
                 foreach (ValueOccurence vo in probabilities[selectedIndex].associatedCards) {
@@ -326,6 +355,9 @@ class FCD_DealerEngine
 
     private void AddToWinningValuesList(int[] arr)
     {
+        if (arr == null)
+            return;
+
         if (winningValues == null)
             winningValues = new List<int>();
 
