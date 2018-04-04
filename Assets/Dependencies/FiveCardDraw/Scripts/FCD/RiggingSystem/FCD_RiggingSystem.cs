@@ -172,8 +172,10 @@ class FCD_RiggingSystem
         int[] addedCards = SmartArrayInit(probability.requiredCount);
         int flushSuit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
 
-        for (int i = 0; i < addedCards.Length; i++)
-            addedCards[i] = deckToDrawFrom.DrawRandomCardInSuit(flushSuit);
+        if (addedCards != null) {
+            for (int i = 0; i < addedCards.Length; i++)
+                addedCards[i] = deckToDrawFrom.DrawRandomCardInSuit(flushSuit);
+        }
 
         return addedCards;
     }

@@ -88,15 +88,14 @@ class FCD_DealerAssistant
     public int[] GetCardSet(float balanceOffset)
     {
         int[] set;
-
+        
         if (balanceOffset == 0.0f)
             set = RandomHand();
-        else
-        {
+        else {
             if (balanceOffset > 0.0f)
                 set = loseSequence[0].GetRandomSet();
             else set = winSequence[0].GetRandomSet();
-
+            
             ScrambleSet(ref set);
             RandomizeSuits(ref set);
         }
