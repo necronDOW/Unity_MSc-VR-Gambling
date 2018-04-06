@@ -97,6 +97,7 @@ public class SceneManager_v2 : MonoBehaviour
     public bool switchingScenes { get; private set; }
     public bool disableVisualElements = true;
     public bool disableInteractionElements = false;
+    public const float lerpTransitionTime = 1.0f;
     
     private float switchTime = 0.0f;
     private int nextIndex = -1;
@@ -146,7 +147,7 @@ public class SceneManager_v2 : MonoBehaviour
 
         switch (nextTransition) {
             case TransitionMode.Lerp:
-                StartCoroutine(QuadraticLerpCamera(scenes[nextIndex], 1.0f));
+                StartCoroutine(QuadraticLerpCamera(scenes[nextIndex], lerpTransitionTime));
                 break;
             case TransitionMode.Instant:
             default:

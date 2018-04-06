@@ -98,10 +98,12 @@ public class HL_GMBehaviour : MonoBehaviour
 
             SetButtonsEnabled(false);
 
-            float potentialWalletOutcome = walletScript.wallet + (walletScript.potScript.potTotal * 2); /* This line accounts for the result of a hi-low win (i.e. doubling 
-                                                                                                           a pot of 10 to 20, with a target of 15, would be a loss). */
-            //bool requiresWin = (testBalance < FCD_RiggingTools.Globals.balanceCurve[engineInPlay.turn]);
-            bool requiresWin = (potentialWalletOutcome < FCD_RiggingTools.Globals.balanceCurve[engineInPlay.turn-1]);
+            float curveTarget = FCD_RiggingTools.Globals.balanceCurve[engineInPlay.turn - 1];
+            float offsetFromCurve = Mathf.Abs(walletScript.wallet - curveTarget);
+            float potentialOffsetFromCurve = Mathf.Abs((walletScript.wallet + walletScript.potScript.potTotal * 2) - curveTarget); // This line accounts for the result of a hi-low win.
+            
+            // If a doubled pot would bring me closer to the target, regardless of going over, allow for a win.
+            bool requiresWin = potentialOffsetFromCurve < offsetFromCurve;
             bool adjustedChoice = userChoiceHigher;
             int lastCardValue = cardSpawner.lastCardValue;
 
@@ -143,8 +145,7 @@ public class HL_GMBehaviour : MonoBehaviour
                 turn = 0;
                 exit = false;
                 exitTime = 0.0f;
-
-                dealerBehaviour.ResetCards();
+                
                 dealerBehaviour.CheckGameOver();
                 sceneManager.SwitchScene(0, SceneManager_v2.TransitionMode.Lerp, 0.0f, SceneManager_v2.DisableMode.PostTransition);
             }

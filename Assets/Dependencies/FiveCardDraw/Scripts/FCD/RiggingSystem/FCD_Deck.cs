@@ -8,6 +8,7 @@ class FCD_Deck
 {
     public const int valueCount = 13;
     public const int suitCount = 4;
+    public const int totalCardCount = valueCount * suitCount;
     public const int wildcardCount = 0;
     public const int firstFaceIndex = 9;
     private const int lastFaceIndex = firstFaceIndex + 2;

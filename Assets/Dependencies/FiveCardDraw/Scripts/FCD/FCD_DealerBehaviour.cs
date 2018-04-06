@@ -1,5 +1,6 @@
 ﻿//#define RUN_DEBUG_SIMULATION
 
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -73,7 +74,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
                 TimedDataLogger.Get().AddToLog("FCD Hand Begin");
                 engine.DrawNewHand();
 #if !RUN_DEBUG_SIMULATION
-                UpdateVisuals(true);
+                UpdateVisuals();
 #endif
                 LogHand("New Hand", engine.hand.fullHand);
 
@@ -148,7 +149,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
 
             engine.CompleteRiggedHand();
 
-            UpdateVisuals(false);
+            UpdateVisuals();
 
             LogHand("Final Cards", engine.hand.fullHand);
             LogTime();
@@ -207,15 +208,12 @@ public class FCD_DealerBehaviour : MonoBehaviour
             baseDealtHand[i] = values[i];
     }
     
-    private void UpdateVisuals(bool rebind)
+    private void UpdateVisuals()
     {
         for (int i = 0; i < cards.Length; i++) {
             if (baseDealtHand[i] != engine.hand.fullHand[i] || !engine.hand.heldIndices[i])
                 cards[i].FlipCard(engine.hand.fullHand[i]);
         }
-
-        if (rebind)
-            StartCoroutine(RebindCardAnimations());
     }
 
     private IEnumerator TriggerOutcomeAnimations()
@@ -229,20 +227,6 @@ public class FCD_DealerBehaviour : MonoBehaviour
                 animator.SetBool("Winning_Card", true);
 
             animator.SetTrigger("Reveal_Outcome");
-        }
-
-        yield return null;
-    }
-
-    private IEnumerator RebindCardAnimations()
-    {
-        Animator animator = cards[0].animator;
-        while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-            yield return null;
-        
-        foreach (FCD_CardBehaviour c in cards) {
-            c.animator.Rebind();
-            c.animator.SetTrigger("Flip");
         }
 
         yield return null;
@@ -288,6 +272,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
     {
         if (sceneManager) {
             StartCoroutine(FX_AnimatorInterface.PlayAnimatorInterfaceAfterSeconds(delay, animatorInterface));
+            StartCoroutine(RebindAnimationsAfter(delay + SceneManager_v2.lerpTransitionTime));
             sceneManager.SwitchScene(1, SceneManager_v2.TransitionMode.Lerp, delay, SceneManager_v2.DisableMode.PostTransition);
         }
     }
@@ -305,5 +290,13 @@ public class FCD_DealerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         gameOver = true;
+    }
+
+    private IEnumerator RebindAnimationsAfter(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        for (int i = 0; i < cards.Length; i++) {
+            cards[i].Rebind();
+        }
     }
 }

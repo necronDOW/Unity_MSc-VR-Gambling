@@ -77,17 +77,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 6ba632ddf58f4094c9b6943b072576f3,
     type: 2}
   m_UseShadowmask: 1
@@ -1624,6 +1622,7 @@ Prefab:
     - {fileID: 0}
     - {fileID: 114292119197746698, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
     - {fileID: 114109709263697806, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
+    - {fileID: 114615670245407914, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &415248201 stripped
@@ -2272,6 +2271,7 @@ Prefab:
     - {fileID: 0}
     - {fileID: 114292119197746698, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
     - {fileID: 114109709263697806, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
+    - {fileID: 114615670245407914, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &703248823
@@ -3735,6 +3735,7 @@ Prefab:
     - {fileID: 0}
     - {fileID: 114292119197746698, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
     - {fileID: 114109709263697806, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
+    - {fileID: 114615670245407914, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1195356389 stripped
@@ -4363,6 +4364,7 @@ Prefab:
     - {fileID: 0}
     - {fileID: 114292119197746698, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
     - {fileID: 114109709263697806, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
+    - {fileID: 114615670245407914, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1372123230
@@ -5806,6 +5808,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 114615670245407914, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d4700ff77e809294c9390cbf7017262f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1859668442

@@ -30,6 +30,15 @@ public class FCD_CardBehaviour : HL_CardBehaviour
         animator.SetTrigger("Flip");
     }
 
+    public void Rebind()
+    {
+        animator.Rebind();
+        GetComponentInChildren<MaterialFadeScript>().ResetColor();
+        
+        PlayShimmer(false);
+        ValueIsVisible = false;
+    }
+
     //private IEnumerator FlipRoutine(int cardValue, float delay = 0.0f)
     //{
     //    if (delay > 0.0f)

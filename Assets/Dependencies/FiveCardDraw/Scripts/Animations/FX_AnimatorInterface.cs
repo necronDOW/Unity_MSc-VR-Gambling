@@ -6,7 +6,7 @@ public class FX_AnimatorInterface : MonoBehaviour
 {
     [SerializeField] private FX_Animator targetFXAnimator;
     [SerializeField] int defaultAnimationIndex = 0;
-
+    
     public void PlayAnimation()
     {
         PlayAnimation(defaultAnimationIndex);

@@ -227,14 +227,36 @@ class FCD_RiggingSystem
         int[] output = new int[requiredCount];
         for (int i = 0; i < output.Length; i++)
             output[i] = -1;
-
+        
         while (index < output.Length) {
             int randomValue = rand.Next(0, FCD_Deck.maxSize);
+
+            // Pair check.
             if (MatchesSimplified(FCD_Deck.SimplifyValue(randomValue), vol) 
                 || MatchesSimplified(FCD_Deck.SimplifyValue(randomValue), output))
                 continue;
 
-            // Don't need to check for straight as the hand will already be maxed out if a straight can/has occured.
+            if (index == output.Length - 1) {
+                // Flush check.
+                int existingSuit = vol.items[0].actualValues[0] / FCD_Deck.valueCount;
+                if (randomValue / FCD_Deck.valueCount == existingSuit) {
+                    randomValue = (randomValue + FCD_Deck.valueCount) % FCD_Deck.totalCardCount;
+                }
+
+                // Straight check.
+                // It is possible to generate a pair of <10 with this function, but impossible to generate a set of 3 or 4 because no pair could already exist.
+                bool straightCheckRequired = FCD_ProbabilitySystem.GetRequiredForStraight(vol).requiredCount <= requiredCount;
+                if (straightCheckRequired) {
+                    int randomSuitStart = (randomValue / FCD_Deck.valueCount) * FCD_Deck.valueCount;
+                    randomValue = vol.items[0].simplifiedValue - (vol.items[0].simplifiedValue >= FCD_Deck.firstFaceIndex ? 4 : 2);
+                    
+                    if (randomValue < 0) {
+                        randomValue += FCD_Deck.valueCount;
+                    }
+
+                    randomValue += randomSuitStart;
+                }
+            }
 
             if (deckToDrawFrom.DrawCard(randomValue) != -1)
                 output[index++] = randomValue;
