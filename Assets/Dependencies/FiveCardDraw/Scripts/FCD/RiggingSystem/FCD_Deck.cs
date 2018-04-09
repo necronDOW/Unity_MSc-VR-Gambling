@@ -72,10 +72,34 @@ class FCD_Deck
         return -1;
     }
 
+    private int GenerateRandomCard(int minIndex, int maxIndex, params int[] simplifiedExceptions)
+    {
+        int randomIndex = rnd.Next(minIndex, maxIndex);
+        
+        for (int i = 0; i < simplifiedExceptions.Length; i++) {
+            if (SimplifyValue(availableCards[randomIndex]) == simplifiedExceptions[i]) {
+                UnityEngine.Debug.Log(availableCards[randomIndex]);
+                return GenerateRandomCard(minIndex, maxIndex, simplifiedExceptions);
+            }
+        }
+
+        return availableCards[randomIndex];
+    }
+
     public int DrawRandomCard()
     {
         int value = availableCards[rnd.Next(0, availableCards.Count)];
 
+        availableCards.Remove(value);
+        availableFaceCards.Remove(value);
+
+        return value;
+    }
+
+    public int DrawRandomCard(params int[] simplifiedExceptions)
+    {
+        int value = GenerateRandomCard(0, availableCards.Count, simplifiedExceptions);
+        
         availableCards.Remove(value);
         availableFaceCards.Remove(value);
 
@@ -98,6 +122,16 @@ class FCD_Deck
     public int DrawRandomFaceCard()
     {
         int value = availableFaceCards[rnd.Next(0, availableFaceCards.Count)];
+
+        availableCards.Remove(value);
+        availableFaceCards.Remove(value);
+
+        return value;
+    }
+
+    public int DrawRandomFaceCard(params int[] simplifiedExceptions)
+    {
+        int value = GenerateRandomCard(0, availableFaceCards.Count, simplifiedExceptions);
 
         availableCards.Remove(value);
         availableFaceCards.Remove(value);

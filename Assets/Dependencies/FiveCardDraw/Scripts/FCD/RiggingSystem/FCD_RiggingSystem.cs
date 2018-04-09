@@ -7,28 +7,42 @@ class FCD_RiggingSystem
 {
     private static int[] EnsureCompleteProbability(FCD_Deck deckToDrawFrom, bool requiresFaceCards, ref FCD_ProbabilitySystem.Probability original, params int[] requiredCounts)
     {
+        // This function dictates which card values will be assigned to an accompanying pair. E.g. if a two pair is required but only an Ace is held, it could assign any second value for the accompanying pair.
+        // ** OPTIMIZATION : This function may be skippable is less than two requiredCounts are given as params. **
+
         List<int> addedCards = new List<int>();
-        ValueOccurence[] voEnsured = new ValueOccurence[requiredCounts.Length];
-        ValueOccurence[] voArraySorted = original.associatedCards;
+        ValueOccurence[] voEnsured = new ValueOccurence[requiredCounts.Length]; // This represents the array of newly added values and includes the existing ones.
+        ValueOccurence[] voArraySorted = original.associatedCards;              // The cards already associated with this particular set or sets.
 
         if (!voArraySorted.Contains(null)) {
+            // Sort the associated cards set, based on the occurence of the simplified associated card, if no null values are found.
             try { voArraySorted = voArraySorted.OrderBy(x => x.occurence).ToArray(); }
             catch { }
         }
         Array.Sort(requiredCounts);
 
         for (int i = 0; i < voEnsured.Length; i++) {
+            // This if statement determines whether or not a new value is required. The first condition would mean a new value is needed.
             if (i >= voArraySorted.Length || voArraySorted[i] == null) {
-                voEnsured[i] = new ValueOccurence(requiresFaceCards ? deckToDrawFrom.DrawRandomFaceCard() : deckToDrawFrom.DrawRandomCard());
+                // This loop creates a small array for existing simplified values. These values are disallowed when creating accompanying pairs or sets. E.g. to prevent a two-pair becoming a four of a kind.
+                int[] simplifiedExceptions = new int[i];
+                for (int j = 0; j < i; j++) {
+                    simplifiedExceptions[j] = voEnsured[j].simplifiedValue;
+                }
+
+                // Add a new value whose simplified value does not match one of the existing sets. E.g. If an Ace is held, do not allow a second set of Aces.
+                voEnsured[i] = new ValueOccurence(requiresFaceCards ? deckToDrawFrom.DrawRandomFaceCard(simplifiedExceptions) : deckToDrawFrom.DrawRandomCard(simplifiedExceptions));
                 addedCards.Add(voEnsured[i].actualValues[0]);
                 requiredCounts[i]--;
             }
             else {
+                // This condition simply adds the existing value.
                 voEnsured[i] = voArraySorted[i];
                 requiredCounts[i] -= voEnsured[i].actualValues.Count;
             }
         }
 
+        // Set the original probability object to the new one.
         original = new FCD_ProbabilitySystem.Probability(original.type, requiredCounts.Sum(), voEnsured);
         return addedCards.ToArray();
     }

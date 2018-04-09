@@ -101,7 +101,7 @@ class FCD_DealerAssistant
         }
 
         //set = new int[5] { 0, 0, 1, 10, 10 };
-        //set = new int[5] { 8, 9, 10, 12, 12 };
+        set = new int[5] { 2, 3, 6, 7, 12 };
 
         simulatedDeck.Reset();
         return set;

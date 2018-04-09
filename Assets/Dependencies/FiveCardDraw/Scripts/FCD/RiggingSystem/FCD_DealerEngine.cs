@@ -121,7 +121,7 @@ class FCD_DealerEngine
     {
         if (!canDrawNewHand)
             return false;
-
+        
         if (NewHandFromArray(assistant.GetCardSet(walletScript.wallet - Globals.balanceCurve[turn]))) {
             DataLogger.Get().AddToLog("Balance", string.Format("£{0:f2}", walletScript.wallet));
             DataLogger.Get().AddToLog("Target", string.Format("£{0:f2}", Globals.balanceCurve[turn]));
@@ -269,7 +269,7 @@ class FCD_DealerEngine
                 selectedIndex = RandomizeIndexBelowTarget(probableIndices, selectedIndex); /* This line causes the selected index to be a range from 0 to the 
                                                                                               target index (i.e. if 2 is desired, rand(0, 2)). */
 #endif
-
+                
                 addedCards = FCD_RiggingSystem.RigForHandType((HT)selectedIndex, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
 
                 float winnings = Globals.betAmount * (Globals.returnsPercentages[selectedIndex] * 0.01f);
