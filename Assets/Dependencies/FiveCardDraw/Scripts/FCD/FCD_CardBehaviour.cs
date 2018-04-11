@@ -7,6 +7,7 @@ public class FCD_CardBehaviour : HL_CardBehaviour
     
     public Animator animator { get; private set; }
     public bool InitialFlip { get; private set; }
+    public bool outcomeRevealed = true;
 
     protected override void Awake()
     {
@@ -69,6 +70,11 @@ public class FCD_CardBehaviour : HL_CardBehaviour
         }
 
         TimedDataLogger.Get().OverrideLastRecordedTime();
+    }
+
+    public void SetOutcomeRevealedTrue()
+    {
+        outcomeRevealed = true;
     }
 
     public void TriggerAnimatorReset()

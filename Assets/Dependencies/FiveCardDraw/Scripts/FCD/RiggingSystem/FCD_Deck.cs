@@ -72,18 +72,17 @@ class FCD_Deck
         return -1;
     }
 
-    private int GenerateRandomCard(int minIndex, int maxIndex, params int[] simplifiedExceptions)
+    private int GenerateRandomCard(List<int> drawFrom, params int[] simplifiedExceptions)
     {
-        int randomIndex = rnd.Next(minIndex, maxIndex);
+        int randomIndex = rnd.Next(0, drawFrom.Count);
         
         for (int i = 0; i < simplifiedExceptions.Length; i++) {
-            if (SimplifyValue(availableCards[randomIndex]) == simplifiedExceptions[i]) {
-                UnityEngine.Debug.Log(availableCards[randomIndex]);
-                return GenerateRandomCard(minIndex, maxIndex, simplifiedExceptions);
+            if (SimplifyValue(drawFrom[randomIndex]) == simplifiedExceptions[i]) {
+                return GenerateRandomCard(drawFrom, simplifiedExceptions);
             }
         }
 
-        return availableCards[randomIndex];
+        return drawFrom[randomIndex];
     }
 
     public int DrawRandomCard()
@@ -98,7 +97,7 @@ class FCD_Deck
 
     public int DrawRandomCard(params int[] simplifiedExceptions)
     {
-        int value = GenerateRandomCard(0, availableCards.Count, simplifiedExceptions);
+        int value = GenerateRandomCard(availableCards, simplifiedExceptions);
         
         availableCards.Remove(value);
         availableFaceCards.Remove(value);
@@ -131,7 +130,7 @@ class FCD_Deck
 
     public int DrawRandomFaceCard(params int[] simplifiedExceptions)
     {
-        int value = GenerateRandomCard(0, availableFaceCards.Count, simplifiedExceptions);
+        int value = GenerateRandomCard(availableFaceCards, simplifiedExceptions);
 
         availableCards.Remove(value);
         availableFaceCards.Remove(value);

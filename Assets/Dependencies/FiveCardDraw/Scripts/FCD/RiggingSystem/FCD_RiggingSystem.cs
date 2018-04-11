@@ -109,10 +109,28 @@ class FCD_RiggingSystem
         for (int i = 0; i < bottomAdditions; i++)
             addedCards[indexer++] = probability.associatedCards[0].simplifiedValue - 1 - i;
 
+        // Suit randomization
+        Random rnd = new Random();
+        int[] selectedSuits = new int[FCD_Deck.suitCount];
+        for (int i = 0; i < addedCards.Length; i++) {
+            int suitMultiplier = rnd.Next(0, selectedSuits.Length);
+            addedCards[i] += FCD_Deck.valueCount * suitMultiplier;
+            selectedSuits[suitMultiplier]++;
+        }
+
+        if (selectedSuits.Contains(5)) {
+            addedCards[0] = (addedCards[0] + FCD_Deck.valueCount) % FCD_Deck.totalCardCount;
+        }
+
+        for (int j = 0; j < addedCards.Length; j++)
+        {
+            UnityEngine.Debug.Log("added=" + FCD_Deck.TranslateValue(addedCards[j]));
+        }
+
         return addedCards;
     }
 
-    public static int[] RigForHandType(HandType type, FCD_ProbabilitySystem.Probability probability, FCD_Deck deckToDrawFrom)
+    public static int[] RigForHandType(ref HandType type, FCD_ProbabilitySystem.Probability probability, FCD_Deck deckToDrawFrom)
     {
         switch (type)
         {
@@ -138,7 +156,15 @@ class FCD_RiggingSystem
                 return RigForFlush(probability, deckToDrawFrom);
 
             case HandType.StraightFlush:
-                return RigForStraightFlush(probability, deckToDrawFrom);
+                // If the maximum held is an Ace, it is impossible to provide less than a Royal Flush, so give a Flush instead.
+                if (probability.associatedCards.Max(x => x.simplifiedValue) < FCD_Deck.valueCount - 1) {
+                    return RigForStraightFlush(probability, deckToDrawFrom);
+                }
+                else {
+                    // A Flush is given here as it is the previous most rewarding without deviating drastically from the balance curve.
+                    type = HandType.Straight;
+                    return RigForFlush(probability, deckToDrawFrom);
+                }
 
             case HandType.RoyalFlush:
                 return RigForRoyalFlush(probability, deckToDrawFrom);
@@ -184,11 +210,30 @@ class FCD_RiggingSystem
     public static int[] RigForFlush(FCD_ProbabilitySystem.Probability probability, FCD_Deck deckToDrawFrom)
     {
         int[] addedCards = SmartArrayInit(probability.requiredCount);
-        int flushSuit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
-
+        
         if (addedCards != null) {
+            int flushSuit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
+
+            // A temporary array is used to make sure that the flush is not drawing to a straight.
+            int[] tempAdded = new int[addedCards.Length];
+            for (int i = 0; i < tempAdded.Length; i++)
+                tempAdded[i] = deckToDrawFrom.DrawRandomCardInSuit(flushSuit);
+
+            tempAdded = tempAdded.OrderByDescending(x => x).ToArray();
+            bool isStraight = true;
+            for (int i = 1; i < tempAdded.Length; i++) {
+                if (tempAdded[i] - tempAdded[i-1] != 1) {
+                    isStraight = false;
+                    break;
+                }
+            }
+
+            if (isStraight) {
+                addedCards[0] = ((FCD_Deck.SimplifyValue(addedCards[0]) + 1) % FCD_Deck.valueCount) * (FCD_Deck.valueCount * flushSuit);
+            }
+
             for (int i = 0; i < addedCards.Length; i++)
-                addedCards[i] = deckToDrawFrom.DrawRandomCardInSuit(flushSuit);
+                addedCards[i] = tempAdded[i];
         }
 
         return addedCards;
@@ -210,12 +255,14 @@ class FCD_RiggingSystem
 
     public static int[] RigForStraightFlush(FCD_ProbabilitySystem.Probability probability, FCD_Deck deckToDrawFrom)
     {
-        int[] addedCards = internal_RigForStraight(probability);
+        int maximumSimplified = probability.associatedCards.Max(x => x.simplifiedValue);
+        // Cap the straight flush draw if the maximum simplified value is a face card. This prevents Royal Flushes.
+        int[] addedCards = internal_RigForStraight(probability, 0, maximumSimplified >= FCD_Deck.firstFaceIndex ? maximumSimplified + 1 : 13);
 
         if (addedCards != null) {
             int suit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
             for (int i = 0; i < addedCards.Length; i++)
-                addedCards[i] += FCD_Deck.valueCount * suit;
+                addedCards[i] = deckToDrawFrom.DrawCard(FCD_Deck.SimplifyValue(addedCards[i]) + (FCD_Deck.valueCount * suit));
         }
 
         return addedCards;
@@ -224,11 +271,11 @@ class FCD_RiggingSystem
     public static int[] RigForRoyalFlush(FCD_ProbabilitySystem.Probability probability, FCD_Deck deckToDrawFrom)
     {
         int[] addedCards = internal_RigForStraight(probability, FCD_Deck.firstRoyalsIndex);
-        int suit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
-
+        
         if (addedCards != null) {
+            int suit = probability.associatedCards[0].actualValues[0] / FCD_Deck.valueCount;
             for (int i = 0; i < addedCards.Length; i++)
-                addedCards[i] = deckToDrawFrom.DrawCard((FCD_Deck.valueCount * suit) + addedCards[i]);
+                addedCards[i] = deckToDrawFrom.DrawCard(FCD_Deck.SimplifyValue(addedCards[i]) + (FCD_Deck.valueCount * suit));
         }
 
         return addedCards;
@@ -244,7 +291,7 @@ class FCD_RiggingSystem
         
         while (index < output.Length) {
             int randomValue = rand.Next(0, FCD_Deck.maxSize);
-
+            
             // Pair check.
             if (MatchesSimplified(FCD_Deck.SimplifyValue(randomValue), vol) 
                 || MatchesSimplified(FCD_Deck.SimplifyValue(randomValue), output))
@@ -252,18 +299,18 @@ class FCD_RiggingSystem
 
             if (index == output.Length - 1) {
                 // Flush check.
-                int existingSuit = vol.items[0].actualValues[0] / FCD_Deck.valueCount;
+                int existingSuit = (int)(vol.items[0].actualValues[0] / (float)FCD_Deck.valueCount);
                 if (randomValue / FCD_Deck.valueCount == existingSuit) {
                     randomValue = (randomValue + FCD_Deck.valueCount) % FCD_Deck.totalCardCount;
                 }
 
                 // Straight check.
-                // It is possible to generate a pair of <10 with this function, but impossible to generate a set of 3 or 4 because no pair could already exist.
+                // It is possible to generate a pair of <10 with this code, but impossible to generate a set of 3 or 4 because no pair could already exist.
                 bool straightCheckRequired = FCD_ProbabilitySystem.GetRequiredForStraight(vol).requiredCount <= requiredCount;
                 if (straightCheckRequired) {
                     int randomSuitStart = (randomValue / FCD_Deck.valueCount) * FCD_Deck.valueCount;
                     randomValue = vol.items[0].simplifiedValue - (vol.items[0].simplifiedValue >= FCD_Deck.firstFaceIndex ? 4 : 2);
-                    
+
                     if (randomValue < 0) {
                         randomValue += FCD_Deck.valueCount;
                     }

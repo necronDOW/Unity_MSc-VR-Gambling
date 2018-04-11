@@ -100,8 +100,7 @@ class FCD_DealerAssistant
             RandomizeSuits(ref set);
         }
 
-        //set = new int[5] { 0, 0, 1, 10, 10 };
-        //set = new int[5] { 2, 3, 6, 7, 12 };
+        //set = new int[5] { 2, 5, 5, 8, 11 };
 
         simulatedDeck.Reset();
         return set;

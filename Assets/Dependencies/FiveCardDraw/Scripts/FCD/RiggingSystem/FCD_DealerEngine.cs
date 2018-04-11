@@ -1,6 +1,7 @@
 ﻿#define USE_CALCULATION_VOLATILITY
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using FCD_RiggingTools;
 using HT = FCD_RiggingTools.HandType;
@@ -254,23 +255,32 @@ class FCD_DealerEngine
             //      * = Filter ignored as the type* contains other types in the same check-case.
             //      ^ = Outlier-case where rigging for the removal type given type^ exists would cause issues.
 
-            RemoveProbabilityIfTypesComplete(HT.FacePair, probabilities, ref probableIndices, HT.TwoPair, HT.ThreeOfAKind);
-            RemoveProbabilityIfTypesComplete(HT.TwoPair, probabilities, ref probableIndices, HT.FullHouse);
-            RemoveProbabilityIfTypesComplete(HT.ThreeOfAKind, probabilities, ref probableIndices, HT.FourOfAKind, HT.FullHouse, HT.TwoPair);
-            RemoveProbabilityIfTypesComplete(HT.Straight, probabilities, ref probableIndices, HT.StraightFlush);
-            RemoveProbabilityIfTypesComplete(HT.Flush, probabilities, ref probableIndices, HT.StraightFlush);
-            RemoveProbabilityIfTypesComplete(HT.StraightFlush, probabilities, ref probableIndices, HT.RoyalFlush);
+            if (probableIndices.Count > 0) {
+                RemoveProbabilityIfTypesComplete(HT.FacePair, probabilities, ref probableIndices, HT.TwoPair, HT.ThreeOfAKind);
+                RemoveProbabilityIfTypesComplete(HT.TwoPair, probabilities, ref probableIndices, HT.FullHouse);
+                RemoveProbabilityIfTypesComplete(HT.ThreeOfAKind, probabilities, ref probableIndices, HT.FourOfAKind, HT.FullHouse, HT.TwoPair);
+                RemoveProbabilityIfTypesComplete(HT.Straight, probabilities, ref probableIndices, HT.StraightFlush);
+                RemoveProbabilityIfTypesComplete(HT.Flush, probabilities, ref probableIndices, HT.StraightFlush);
+                RemoveProbabilityIfTypesComplete(HT.StraightFlush, probabilities, ref probableIndices, HT.RoyalFlush);
+
+                // SPECIAL CONDITION : Remove Face Pair is a smaller pair already exists.
+                if (probabilities[probableIndices[0]].type == HT.FacePair && FCD_ProbabilitySystem.GetRequiredForNonFacePair(hand.currentHand.ToArray()).requiredCount == 0) {
+                    UnityEngine.Debug.Log("Removed: FacePair");
+                    probableIndices.RemoveAt(0);
+                }
+            }
             #endregion
 
             if (probableIndices.Count != 0) {
                 selectedIndex = ClosestPercentageGainIndex(Math.Abs(balanceVariance), probableIndices);
 
 #if USE_CALCULATION_VOLATILITY
-                selectedIndex = RandomizeIndexBelowTarget(probableIndices, selectedIndex); /* This line causes the selected index to be a range from 0 to the 
-                                                                                              target index (i.e. if 2 is desired, rand(0, 2)). */
+                //selectedIndex = RandomizeIndexBelowTarget(probableIndices, selectedIndex); /* This line causes the selected index to be a range from 0 to the 
+                //                                                                              target index (i.e. if 2 is desired, rand(0, 2)). */
 #endif
-                
-                addedCards = FCD_RiggingSystem.RigForHandType((HT)selectedIndex, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
+                HT selectedHandType = (HT)selectedIndex;
+                addedCards = FCD_RiggingSystem.RigForHandType(ref selectedHandType, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
+                selectedIndex = (int)selectedHandType;
 
                 float winnings = Globals.betAmount * (Globals.returnsPercentages[selectedIndex] * 0.01f);
                 
@@ -300,10 +310,10 @@ class FCD_DealerEngine
 
         if (addedCards != null)
             hand.Merge(addedCards);
-
+        
         int requiredTopUp = 5 - hand.currentHand.Count;
         if (requiredTopUp > 0)
-            addedCards = FCD_RiggingSystem.RigForLoss(new ValueOccurenceList(hand.currentHand.ToArray()), requiredTopUp, FCD_Deck.GetInstance(ref deckInstance));
+            addedCards = FCD_RiggingSystem.RigForLoss(new ValueOccurenceList(handWasWin ? hand.fullHand : hand.currentHand.ToArray()), requiredTopUp, FCD_Deck.GetInstance(ref deckInstance));
         else addedCards = null;
 
         if (addedCards != null)

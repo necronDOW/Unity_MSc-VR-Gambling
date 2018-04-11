@@ -72,23 +72,27 @@ public class FCD_DealerBehaviour : MonoBehaviour
 
         switch (phase) {
             case 0:
-                TimedDataLogger.Get().AddToLog("FCD Hand Begin");
-                engine.DrawNewHand();
+                if (cards.All(x => x.outcomeRevealed)) {
+                    TimedDataLogger.Get().AddToLog("FCD Hand Begin");
+                    engine.DrawNewHand();
 #if !RUN_DEBUG_SIMULATION
-                UpdateVisuals();
+                    UpdateVisuals();
 #endif
-                LogHand("New Hand", engine.hand.fullHand);
+                    LogHand("New Hand", engine.hand.fullHand);
 
-                if (holdButtonGroup)
-                    holdButtonGroup.SetActive(true);
+                    if (holdButtonGroup)
+                        holdButtonGroup.SetActive(true);
 
-                SetBaseDealtHand(engine.hand.fullHand);
-                isTiming = true;
-                phase++;
+                    SetBaseDealtHand(engine.hand.fullHand);
+                    isTiming = true;
+                    cards.All(x => x.outcomeRevealed = false);
+                    phase++;
+
 
 #if RUN_DEBUG_SIMULATION
                 DoPhaseBehaviour();
 #endif
+                }
                 break;
 
             case 1:

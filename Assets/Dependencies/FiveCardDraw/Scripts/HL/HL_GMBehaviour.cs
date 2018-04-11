@@ -101,10 +101,10 @@ public class HL_GMBehaviour : MonoBehaviour
             float curveTarget = FCD_RiggingTools.Globals.balanceCurve[engineInPlay.turn - 1];
             float offsetFromCurve = Mathf.Abs(walletScript.wallet - curveTarget);
             float potentialOffsetFromCurve = Mathf.Abs((walletScript.wallet + walletScript.potScript.potTotal * 2) - curveTarget); // This line accounts for the result of a hi-low win.
-            
+
             // If a doubled pot would bring me closer to the target, regardless of going over, allow for a win.
-            // TODO : Only allow ift to go 2 above to curve using additional if statements.
-            bool requiresWin = potentialOffsetFromCurve < offsetFromCurve;
+            // Or... If the difference is equal, give a 50/50 chance of a win.
+            bool requiresWin = potentialOffsetFromCurve < offsetFromCurve || (potentialOffsetFromCurve == offsetFromCurve && Random.Range(0, 2) == 1);
             bool adjustedChoice = userChoiceHigher;
             int lastCardValue = cardSpawner.lastCardValue;
 
