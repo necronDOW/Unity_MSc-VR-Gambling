@@ -424,6 +424,7 @@ MonoBehaviour:
   hl_GameMasterBehaviour: {fileID: 112197981}
   sceneManager: {fileID: 742959065}
   holdButtonGroup: {fileID: 651158521}
+  holdReminderNudge: {fileID: 1093094495}
 --- !u!114 &193870605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -660,7 +661,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114761875353506508, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
@@ -1133,7 +1134,7 @@ Prefab:
     - target: {fileID: 23891026581544016, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114785927836457556, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
@@ -1327,7 +1328,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4101027774611538, guid: fb1f3d80df4def64faed40d191483b48, type: 2}
       propertyPath: m_LocalScale.x
@@ -2391,6 +2392,7 @@ RectTransform:
   m_Children:
   - {fileID: 102115544}
   - {fileID: 444835414}
+  - {fileID: 1093094494}
   m_Father: {fileID: 230133595}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3196,6 +3198,107 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hidden: 1
+--- !u!1 &1093094493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1093094494}
+  - component: {fileID: 1093094498}
+  - component: {fileID: 1093094497}
+  - component: {fileID: 1093094496}
+  - component: {fileID: 1093094495}
+  m_Layer: 5
+  m_Name: HoldReminder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1093094494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093094493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
+  m_Children: []
+  m_Father: {fileID: 703251055}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -30}
+  m_SizeDelta: {x: 800, y: 60}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1093094495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093094493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4807a242c2a78c4bba9b3766e296324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1093094496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093094493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1093094497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093094493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 34bb8c59f3e01854fbe322df7dc12038, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 32
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: You must hold at least one card!
+--- !u!222 &1093094498
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093094493}
 --- !u!1 &1098312535
 GameObject:
   m_ObjectHideFlags: 0

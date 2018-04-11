@@ -12,6 +12,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
     [SerializeField] private HL_GMBehaviour hl_GameMasterBehaviour;
     [SerializeField] private SceneManager_v2 sceneManager;
     [SerializeField] private FCD_ButtonGroup holdButtonGroup;
+    [SerializeField] private UINudge holdReminderNudge;
     public FCD_DelayedWalletUpdate delayedWalletUpdater { get; private set; }
 
     private FCD_DealerEngine engine;
@@ -181,6 +182,10 @@ public class FCD_DealerBehaviour : MonoBehaviour
             else {
                 CheckGameOver(1.125f);
             }
+        } else {
+            if (holdReminderNudge != null) {
+                holdReminderNudge.PlayNudge(3.0f);
+            }
         }
     }
 #endif
@@ -190,6 +195,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
 #if !RUN_DEBUG_SIMULATION
         if (phase == 1 && cardIndex >= 0 && cardIndex < engine.hand.size) {
             engine.hand.ToggleHold(cardIndex);
+            holdReminderNudge.StopNudge();
         }
 #endif
     }

@@ -103,6 +103,7 @@ public class HL_GMBehaviour : MonoBehaviour
             float potentialOffsetFromCurve = Mathf.Abs((walletScript.wallet + walletScript.potScript.potTotal * 2) - curveTarget); // This line accounts for the result of a hi-low win.
             
             // If a doubled pot would bring me closer to the target, regardless of going over, allow for a win.
+            // TODO : Only allow ift to go 2 above to curve using additional if statements.
             bool requiresWin = potentialOffsetFromCurve < offsetFromCurve;
             bool adjustedChoice = userChoiceHigher;
             int lastCardValue = cardSpawner.lastCardValue;
