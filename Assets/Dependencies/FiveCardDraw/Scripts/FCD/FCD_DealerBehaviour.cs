@@ -55,7 +55,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
 
         if (gameOver && !sceneManager.switchingScenes) {
             gameOverScript.TriggerGameOver(walletScript);
-            gameOver = false;
+            //gameOver = false;
         }
     }
 
@@ -67,7 +67,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
 
     public void DoPhaseBehaviour()
     {
-        if (sceneManager && sceneManager.switchingScenes)
+        if (gameOver || (sceneManager && sceneManager.switchingScenes))
             return;
 
         switch (phase) {
