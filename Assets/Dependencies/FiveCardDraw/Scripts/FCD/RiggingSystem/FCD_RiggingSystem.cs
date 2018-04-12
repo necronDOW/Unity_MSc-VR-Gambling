@@ -229,7 +229,7 @@ class FCD_RiggingSystem
             }
 
             if (isStraight) {
-                addedCards[0] = ((FCD_Deck.SimplifyValue(addedCards[0]) + 1) % FCD_Deck.valueCount) * (FCD_Deck.valueCount * flushSuit);
+                tempAdded[0] = ((FCD_Deck.SimplifyValue(tempAdded[0]) + 1) % FCD_Deck.valueCount) * (FCD_Deck.valueCount * flushSuit);
             }
 
             for (int i = 0; i < addedCards.Length; i++)
@@ -310,9 +310,13 @@ class FCD_RiggingSystem
                 if (straightCheckRequired) {
                     int randomSuitStart = (randomValue / FCD_Deck.valueCount) * FCD_Deck.valueCount;
                     randomValue = vol.items[0].simplifiedValue - (vol.items[0].simplifiedValue >= FCD_Deck.firstFaceIndex ? 4 : 2);
-
+                    
                     if (randomValue < 0) {
                         randomValue += FCD_Deck.valueCount;
+                    }
+
+                    if (randomValue >= FCD_Deck.firstFaceIndex) {
+                        randomValue += FCD_Deck.firstFaceIndex - randomValue - 1;
                     }
 
                     randomValue += randomSuitStart;
