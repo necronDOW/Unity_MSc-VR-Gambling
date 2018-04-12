@@ -306,21 +306,30 @@ class FCD_RiggingSystem
 
                 // Straight check.
                 // It is possible to generate a pair of <10 with this code, but impossible to generate a set of 3 or 4 because no pair could already exist.
-                bool straightCheckRequired = FCD_ProbabilitySystem.GetRequiredForStraight(vol).requiredCount <= requiredCount;
-                if (straightCheckRequired) {
-                    int randomSuitStart = (randomValue / FCD_Deck.valueCount) * FCD_Deck.valueCount;
-                    randomValue = vol.items[0].simplifiedValue - (vol.items[0].simplifiedValue >= FCD_Deck.firstFaceIndex ? 4 : 2);
-                    
-                    if (randomValue < 0) {
-                        randomValue += FCD_Deck.valueCount;
-                    }
+                output[index] = randomValue;
 
-                    if (randomValue >= FCD_Deck.firstFaceIndex) {
-                        randomValue += FCD_Deck.firstFaceIndex - randomValue - 1;
-                    }
+                List<int> allSimplifiedValues = new List<int>();
+                allSimplifiedValues.AddRange(output.Select(x => FCD_Deck.SimplifyValue(x)));
+                allSimplifiedValues.AddRange(vol.items.Select(x => x.simplifiedValue));
+                allSimplifiedValues.Sort();
 
-                    randomValue += randomSuitStart;
+                bool isStraight = true;
+                for (int i = 1; i < allSimplifiedValues.Count; i++) {
+                    if (allSimplifiedValues[i] - allSimplifiedValues[i - 1] != 1)
+                        isStraight = false;
                 }
+
+                if (isStraight) {
+                    int suitStart = (int)((float)randomValue / FCD_Deck.valueCount) * FCD_Deck.valueCount;
+
+                    if (allSimplifiedValues[0] - 2 >= 0)
+                        randomValue = allSimplifiedValues[0] - 2;
+                    else randomValue = allSimplifiedValues[allSimplifiedValues.Count - 1] + 2;
+                    
+                    randomValue += suitStart;
+                }
+
+                output[index] = -1;
             }
 
             if (deckToDrawFrom.DrawCard(randomValue) != -1)
