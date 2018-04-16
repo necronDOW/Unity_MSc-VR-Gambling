@@ -112,7 +112,7 @@ class FCD_DealerAssistant
         
         // Return a set that encourages a type of hand lower than or equal to the desired one.
         set = (winSet ? winSequence[rnd.Next(0, PreferedWin(balanceOffset) + 1)] : loseSequence[0]).GetRandomSet();
-        //set = new int[5] { 0, 1, 2, 3, 4 };
+        //set = new int[5] { 0,5,10,10,10 };
 
         ScrambleSet(ref set);
         RandomizeSuits(ref set, true);

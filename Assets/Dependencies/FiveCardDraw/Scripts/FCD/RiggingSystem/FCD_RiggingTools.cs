@@ -62,6 +62,8 @@ namespace FCD_RiggingTools
             actualValues = new List<int>();
             for (int i = 0; i < other.actualValues.Count; i++)
                 actualValues.Add(other.actualValues[i]);
+
+            maxOccurence = other.maxOccurence;
         }
 
         public void AddOccurence(int value)
@@ -151,7 +153,7 @@ namespace FCD_RiggingTools
 
         public ValueOccurence[] FindMostOccuringInRange(int range)
         {
-            if (variance.Length == 0)
+            if (variance == null || variance.Length == 0)
                 return items.ToArray();
 
             int[] bestIndices = null;

@@ -47,22 +47,22 @@ class FCD_ProbabilitySystem
         ValueOccurenceList vol = new ValueOccurenceList(baseHand);
 
         // Independent probabilities (face pair and two pair).
-        AddProbability(GetRequiredForFacePair, vol, maxAllowedCount, ref probabilities[(int)HandType.FacePair]);
-        AddProbability(GetRequiredForTwoPair, vol, maxAllowedCount, ref probabilities[(int)HandType.TwoPair]);
+        AddProbability(GetRequiredForFacePair, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.FacePair]);
+        AddProbability(GetRequiredForTwoPair, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.TwoPair]);
 
         // If a three of a kind can be made ...
-        if (AddProbability(GetRequiredForThreeOfAKind, vol, maxAllowedCount, ref probabilities[(int)HandType.ThreeOfAKind])) {
+        if (AddProbability(GetRequiredForThreeOfAKind, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.ThreeOfAKind])) {
             // Check also for four of a kind and full house.
-            AddProbability(GetRequiredForFourOfAKind, vol, maxAllowedCount, ref probabilities[(int)HandType.FourOfAKind]);
-            AddProbability(GetRequiredForFullHouse, vol, maxAllowedCount, ref probabilities[(int)HandType.FullHouse]);
+            AddProbability(GetRequiredForFourOfAKind, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.FourOfAKind]);
+            AddProbability(GetRequiredForFullHouse, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.FullHouse]);
         }
 
         // If both a straight and flush can be made ...
-        bool canStraight = AddProbability(GetRequiredForStraight, vol, maxAllowedCount, ref probabilities[(int)HandType.Straight]);
-        bool canFlush = AddProbability(GetRequiredForFlush, vol, maxAllowedCount, ref probabilities[(int)HandType.Flush]);
+        bool canStraight = AddProbability(GetRequiredForStraight, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.Straight]);
+        bool canFlush = AddProbability(GetRequiredForFlush, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.Flush]);
         if (canStraight && canFlush) {
             // Check also for a straight-flush, and if that can be made ...
-            if (AddProbability(GetRequiredForStraightFlush, vol, maxAllowedCount, ref probabilities[(int)HandType.StraightFlush])) {
+            if (AddProbability(GetRequiredForStraightFlush, new ValueOccurenceList(vol), maxAllowedCount, ref probabilities[(int)HandType.StraightFlush])) {
                 // Check also for a royal-flush.
                 ValueOccurenceList royalsExclusiveVol = new ValueOccurenceList(baseHand, true);
                 AddProbability(GetRequiredForRoyalFlush, royalsExclusiveVol, maxAllowedCount, ref probabilities[(int)HandType.RoyalFlush]);
