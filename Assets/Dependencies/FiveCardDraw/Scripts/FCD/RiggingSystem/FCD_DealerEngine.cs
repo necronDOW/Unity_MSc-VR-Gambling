@@ -150,7 +150,7 @@ class FCD_DealerEngine
             if ((hand[i] = FCD_Deck.GetInstance(ref deckInstance).DrawCardFromSimplified(hand[i])) == -1)
                 return false;
         }
-
+        
         this.hand = new Hand(hand);
         return true;
     }

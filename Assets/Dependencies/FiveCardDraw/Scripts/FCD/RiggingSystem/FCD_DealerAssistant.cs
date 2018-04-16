@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using FCD_RiggingTools;
 
@@ -8,7 +9,7 @@ class FCD_DealerAssistant
     public class Sequence
     {
         public bool valid { get { return allData != null; } }
-        private int returnsPercentage;
+        public int returnsPercentage { get; private set; }
         private int countPerSet = -1;
         private int[] allData;
 
@@ -85,36 +86,39 @@ class FCD_DealerAssistant
         else return false;
     }
 
+    private int PreferedWin(float balanceOffset)
+    {
+        int boPercentage = (int)(balanceOffset * -100);
+        for (int i = winSequence.Length - 1; i > 0; i--) {
+            if (boPercentage >= winSequence[i].returnsPercentage)
+                return i;
+        }
+
+        return 0;
+    }
+
     public int[] GetCardSet(float balanceOffset)
     {
         int[] set;
-        
-        if (balanceOffset == 0.0f)
-            set = RandomHand();
-        else {
-            if (balanceOffset > 0.0f)
-                set = loseSequence[0].GetRandomSet();
-            else set = winSequence[0].GetRandomSet();
-            
-            ScrambleSet(ref set);
-            RandomizeSuits(ref set);
-        }
+        Random rnd = new Random();
 
-        // RIG CARDS FOR DEBUGGING
-        //set = new int[5] { 3,3,3,11,2 };
+        bool winSet = false;
+        if (balanceOffset < 0.0f) {
+            winSet = true;
+        }
+        else if (balanceOffset == 0.0f) {
+            winSet = rnd.Next(0, 2) == 1 ? true : false;
+        }
+        
+        // Return a set that encourages a type of hand lower than or equal to the desired one.
+        set = (winSet ? winSequence[rnd.Next(0, PreferedWin(balanceOffset) + 1)] : loseSequence[0]).GetRandomSet();
+        //set = new int[5] { 0, 1, 2, 3, 4 };
+
+        ScrambleSet(ref set);
+        RandomizeSuits(ref set, true);
 
         simulatedDeck.Reset();
         return set;
-    }
-
-    private int[] RandomHand()
-    {
-        int[] hand = new int[5];
-
-        for (int i = 0; i < hand.Length; i++)
-            hand[i] = simulatedDeck.DrawRandomCard();
-
-        return hand;
     }
 
     private void ScrambleSet(ref int[] set)
@@ -135,18 +139,24 @@ class FCD_DealerAssistant
         set = newSet.ToArray();
     }
 
-    private void RandomizeSuits(ref int[] set)
+    private void RandomizeSuits(ref int[] set, bool denyFlushDraw)
     {
         int randomized = 0;
         Random rnd = new Random();
+        int[] chosenSuits = new int[FCD_Deck.suitCount];
 
-        while (randomized < set.Length)
-        {
+        while (randomized < set.Length) {
             int randomSuit = rnd.Next(0, FCD_Deck.suitCount);
+            chosenSuits[randomSuit]++;
             int cardIndex = FCD_Deck.valueCount * randomSuit + set[randomized];
 
             if (simulatedDeck.DrawCard(cardIndex) != -1)
                 set[randomized++] = cardIndex;
+        }
+
+        if (denyFlushDraw && chosenSuits.Contains(randomized)) {
+            int randomSetValue = rnd.Next(0, randomized);
+            set[randomSetValue] = (set[randomSetValue] + FCD_Deck.valueCount) % FCD_Deck.totalCardCount;
         }
     }
 
