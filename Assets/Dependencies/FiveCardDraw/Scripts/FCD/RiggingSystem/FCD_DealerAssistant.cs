@@ -100,7 +100,8 @@ class FCD_DealerAssistant
             RandomizeSuits(ref set);
         }
 
-        //set = new int[5] { 1, 3, 5, 9, 12 };
+        // RIG CARDS FOR DEBUGGING
+        //set = new int[5] { 3,3,3,11,2 };
 
         simulatedDeck.Reset();
         return set;

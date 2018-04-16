@@ -16,6 +16,7 @@ namespace FCD_RiggingTools
         StraightFlush,
         RoyalFlush
     }
+
     public static class Globals
     {
         public const string winSequencePath = "initial_seq_w";
@@ -39,7 +40,15 @@ namespace FCD_RiggingTools
     {
         public int simplifiedValue { get; private set; }
         public List<int> actualValues { get; private set; }
-        public int occurence { get { return actualValues.Count; } }
+        public int maxOccurence = -1;
+        public int occurence {
+            get {
+                if (maxOccurence != -1)
+                    return maxOccurence;
+
+                return actualValues.Count;
+            }
+        }
 
         public ValueOccurence(int initialValue)
         {

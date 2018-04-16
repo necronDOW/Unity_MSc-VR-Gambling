@@ -19,6 +19,10 @@ class FCD_Deck
     private static readonly char[] translatedSuits = new char[4] { 'C', 'D', 'H', 'S' };
     public static string TranslateValue(int value)
     {
+        if (value < 0 || value >= totalCardCount) {
+            return "!(" + value.ToString() + ")";
+        }
+
         return translatedValues[value % 13] + translatedSuits[value / 13];
     }
     

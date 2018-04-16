@@ -246,7 +246,7 @@ class FCD_DealerEngine
             //     |REMOVE:        |IF EXISTS: |1:             |2:             |3:             |4:              |
             //     |---------------|-----------|---------------|---------------|---------------|----------------|
             //     |FacePair       |           |FourOfAKind*   |FullHouse*     |ThreeOfAKind   |TwoPair         |
-            //     |TwoPair        |           |FullHouse      |               |               |                |
+            //     |TwoPair        |           |FullHouse      |ThreeOfAKind^  |               |                |
             //     |ThreeOfAKind   |           |FourOfAKind    |FullHouse      |TwoPair^       |                |
             //     |Straight       |           |StraightFlush  |               |               |                |
             //     |Flush          |           |StraightFlush  |               |               |                |
@@ -257,7 +257,7 @@ class FCD_DealerEngine
 
             if (probableIndices.Count > 0) {
                 RemoveProbabilityIfTypesComplete(HT.FacePair, probabilities, ref probableIndices, HT.TwoPair, HT.ThreeOfAKind);
-                RemoveProbabilityIfTypesComplete(HT.TwoPair, probabilities, ref probableIndices, HT.FullHouse);
+                RemoveProbabilityIfTypesComplete(HT.TwoPair, probabilities, ref probableIndices, HT.FullHouse, HT.ThreeOfAKind);
                 RemoveProbabilityIfTypesComplete(HT.ThreeOfAKind, probabilities, ref probableIndices, HT.FourOfAKind, HT.FullHouse, HT.TwoPair);
                 RemoveProbabilityIfTypesComplete(HT.Straight, probabilities, ref probableIndices, HT.StraightFlush);
                 RemoveProbabilityIfTypesComplete(HT.Flush, probabilities, ref probableIndices, HT.StraightFlush);
@@ -275,11 +275,12 @@ class FCD_DealerEngine
                 selectedIndex = ClosestPercentageGainIndex(Math.Abs(balanceVariance), probableIndices);
 
 #if USE_CALCULATION_VOLATILITY
-                //selectedIndex = RandomizeIndexBelowTarget(probableIndices, selectedIndex); /* This line causes the selected index to be a range from 0 to the 
-                //                                                                              target index (i.e. if 2 is desired, rand(0, 2)). */
+                selectedIndex = RandomizeIndexBelowTarget(probableIndices, selectedIndex); /* This line causes the selected index to be a range from 0 to the 
+                                                                                              target index (i.e. if 2 is desired, rand(0, 2)). */
 #endif
                 HT selectedHandType = (HT)selectedIndex;
                 addedCards = FCD_RiggingSystem.RigForHandType(ref selectedHandType, probabilities[selectedIndex], FCD_Deck.GetInstance(ref deckInstance));
+                ValidateWin(ref selectedHandType, addedCards); // This function catches any changes in hand type base on newly added cards.
                 selectedIndex = (int)selectedHandType;
 
                 float winnings = Globals.betAmount * (Globals.returnsPercentages[selectedIndex] * 0.01f);
@@ -326,6 +327,22 @@ class FCD_DealerEngine
             turn++;
 
         FCD_Deck.GetInstance(ref deckInstance).Reset();
+    }
+
+    private void ValidateWin(ref HT handType, int[] addedCards)
+    {
+        if (addedCards == null)
+            return;
+
+        int[] fullHand = addedCards.Concat(hand.currentHand).ToArray();
+        ValueOccurenceList vol = new ValueOccurenceList(fullHand);
+
+        for (int i = (int)FCD_ProbabilitySystem.maxProbability; i > (int)handType; i--) {
+            if (FCD_ProbabilitySystem.probabilityFuncs[i](vol).requiredCount == 0) {
+                handType = (HT)i;
+                return;
+            }
+        }
     }
 
     private int ClosestPercentageGainIndex(float balanceVariance, List<int> probableIndices)

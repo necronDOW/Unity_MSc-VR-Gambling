@@ -38,7 +38,7 @@ class FCD_RiggingSystem
             else {
                 // This condition simply adds the existing value.
                 voEnsured[i] = voArraySorted[i];
-                requiredCounts[i] -= voEnsured[i].actualValues.Count;
+                requiredCounts[i] -= voEnsured[i].occurence;
             }
         }
 
@@ -52,8 +52,11 @@ class FCD_RiggingSystem
         int index = 0;
         int[] addedCards = SmartArrayInit(probability.requiredCount);
 
+        if (addedCards == null)
+            return null;
+
         for (int i = 0; i < probability.associatedCards.Length; i++) {
-            for (int j = 0; j < requiredCounts[i] - probability.associatedCards[i].actualValues.Count; j++) {
+            for (int j = 0; j < requiredCounts[i] - probability.associatedCards[i].occurence; j++) {
                 int newCardValue = deckToDrawFrom.DrawCardFromSimplified(probability.associatedCards[i].simplifiedValue);
 
                 if (newCardValue == -1 || index >= addedCards.Length)
@@ -69,7 +72,7 @@ class FCD_RiggingSystem
     {
         if (probability.associatedCards == null || probability.associatedCards[0].simplifiedValue < minRange || probability.associatedCards.Last().simplifiedValue > maxRange)
             return null;
-
+        
         int diffRange = maxRange - minRange;
         int lastValue = probability.associatedCards[0].simplifiedValue;
         int requiredCount = probability.requiredCount;
@@ -117,14 +120,9 @@ class FCD_RiggingSystem
             addedCards[i] += FCD_Deck.valueCount * suitMultiplier;
             selectedSuits[suitMultiplier]++;
         }
-
-        if (selectedSuits.Contains(5)) {
+        
+        if (selectedSuits.Max() == probability.requiredCount) {
             addedCards[0] = (addedCards[0] + FCD_Deck.valueCount) % FCD_Deck.totalCardCount;
-        }
-
-        for (int j = 0; j < addedCards.Length; j++)
-        {
-            UnityEngine.Debug.Log("added=" + FCD_Deck.TranslateValue(addedCards[j]));
         }
 
         return addedCards;
@@ -201,7 +199,7 @@ class FCD_RiggingSystem
 
         if (addedCards != null) {
             for (int i = 0; i < addedCards.Length; i++)
-                addedCards[i] = deckToDrawFrom.DrawCardFromSimplified(addedCards[i]);
+                addedCards[i] = deckToDrawFrom.DrawCard(addedCards[i]);
         }
 
         return addedCards;

@@ -184,7 +184,7 @@ public class FCD_DealerBehaviour : MonoBehaviour
                     tracker.SetTrackingOverride(true);
             }
             else {
-                CheckGameOver(1.125f);
+                CheckGameOver(2.0f);
             }
         } else {
             if (holdReminderNudge != null) {

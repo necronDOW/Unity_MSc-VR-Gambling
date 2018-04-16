@@ -24,7 +24,20 @@ class FCD_ProbabilitySystem
             associatedCards = _other.associatedCards;
         }
     }
-    
+
+    public static HandType maxProbability = HandType.RoyalFlush;
+    public static Func<ValueOccurenceList, Probability>[] probabilityFuncs = {
+        GetRequiredForFacePair,
+        GetRequiredForTwoPair,
+        GetRequiredForThreeOfAKind,
+        GetRequiredForStraight,
+        GetRequiredForFlush,
+        GetRequiredForFullHouse,
+        GetRequiredForFourOfAKind,
+        GetRequiredForStraightFlush,
+        GetRequiredForRoyalFlush,
+    };
+
     // Check All Conditions
     public static Probability[] GetRequiredForAllCombinations(int[] baseHand, int handSizeLimit)
     {
@@ -77,9 +90,14 @@ class FCD_ProbabilitySystem
     private static int internal_GetRequiredFor(ValueOccurenceList vol, int count, int start, int end, out ValueOccurence associatedCards)
     {
         associatedCards = vol.FindMostOccuringInSimplifiedRange(start, end);
+        
+        if (associatedCards != null) {
+            if (associatedCards.occurence > count) {
+                associatedCards.maxOccurence = count;
+            }
 
-        if (associatedCards != null)
             return (count - associatedCards.occurence).Clamp(0, count);
+        }
         else return count.Clamp(0, count);
     }
 
@@ -216,6 +234,10 @@ class FCD_ProbabilitySystem
     public static Probability GetRequiredForStraightFlush(ValueOccurenceList vol)
     {
         Probability straightProbability = GetRequiredForStraight(vol);
+
+        if (straightProbability.associatedCards == null)
+            return straightProbability;
+
         vol = new ValueOccurenceList(straightProbability.associatedCards);
         return new Probability(GetRequiredForFlush(vol), HandType.StraightFlush);
     }
