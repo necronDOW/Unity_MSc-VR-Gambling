@@ -661,7 +661,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114761875353506508, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
@@ -1134,7 +1134,7 @@ Prefab:
     - target: {fileID: 23891026581544016, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114785927836457556, guid: c6f8e5ad9f8321349b0da2e0b5bd4eab,
         type: 2}
@@ -1328,7 +1328,7 @@ Prefab:
     - target: {fileID: 23133512687025940, guid: fb1f3d80df4def64faed40d191483b48,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101027774611538, guid: fb1f3d80df4def64faed40d191483b48, type: 2}
       propertyPath: m_LocalScale.x
@@ -1474,6 +1474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 193870607}
   audioVolume: 0.6
+  audioPitch: 1
   audioClip: {fileID: 8300000, guid: e5847ede47a66eb4d9ad68b4f648e5f8, type: 3}
 --- !u!1001 &395745054
 Prefab:
@@ -1533,88 +1534,71 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minScalar
       value: -1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09e4d0df1c20995469837f175d450574, type: 2}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: randomSeed
       value: 1785184188
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: lengthInSec
       value: 0.25
       objectReference: {fileID: 0}
@@ -1716,6 +1700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 193870607}
   audioVolume: 0.6
+  audioPitch: 1
   audioClip: {fileID: 8300000, guid: e5847ede47a66eb4d9ad68b4f648e5f8, type: 3}
 --- !u!1 &528969958
 GameObject:
@@ -1813,6 +1798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 193870607}
   audioVolume: 0.6
+  audioPitch: 1
   audioClip: {fileID: 8300000, guid: e5847ede47a66eb4d9ad68b4f648e5f8, type: 3}
 --- !u!1 &576980053
 GameObject:
@@ -1861,6 +1847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 1098312537}
   audioVolume: 1
+  audioPitch: 1
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: d33bd1fd69c549045800807c3dd2630f, type: 3}
@@ -2182,88 +2169,71 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09e4d0df1c20995469837f175d450574, type: 2}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minScalar
       value: -1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: randomSeed
       value: 1921318843
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: lengthInSec
       value: 0.25
       objectReference: {fileID: 0}
@@ -2735,6 +2705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -3090,11 +3061,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 1372123232}
   audioVolume: 1
+  audioPitch: 1.3
   audioClip: {fileID: 0}
   clipSelection:
-  - {fileID: 8300000, guid: 4bb381fe5f885024eb9d13d3763382a4, type: 3}
-  - {fileID: 8300000, guid: 83eef7cec18951341bea221c206b784a, type: 3}
-  - {fileID: 8300000, guid: 94ceb764e97d21e4a89723776c4238aa, type: 3}
+  - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
+  - {fileID: 8300000, guid: 41dc09fd375becb49af5c747de701133, type: 3}
+  - {fileID: 8300000, guid: 8f873c8afdd277c4d9a754af08ae71a6, type: 3}
 --- !u!114 &956381965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,6 +3126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 193870607}
   audioVolume: 0.6
+  audioPitch: 1
   audioClip: {fileID: 8300000, guid: e5847ede47a66eb4d9ad68b4f648e5f8, type: 3}
 --- !u!1 &1081464556
 GameObject:
@@ -3748,88 +3721,71 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09e4d0df1c20995469837f175d450574, type: 2}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minScalar
       value: -1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: randomSeed
       value: -41663145
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: lengthInSec
       value: 0.25
       objectReference: {fileID: 0}
@@ -4077,6 +4033,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 1372123232}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -4377,88 +4334,71 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minScalar
       value: -1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09e4d0df1c20995469837f175d450574, type: 2}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: randomSeed
       value: -1693475123
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: lengthInSec
       value: 0.25
       objectReference: {fileID: 0}
@@ -5070,6 +5010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -5381,6 +5322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 1372123232}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -5582,6 +5524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -5735,6 +5678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -5804,108 +5748,87 @@ Prefab:
       propertyPath: audioVolume
       value: 0.6
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSpeed.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: randomSeed
       value: 1248537836
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.scalar
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startSize.minScalar
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: TrailModule.enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: TrailModule.textureMode
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 199922371779827396, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 09e4d0df1c20995469837f175d450574, type: 2}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.maxNumParticles
       value: 500
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.randomizeRotationDirection
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationX.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotationY.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.minScalar
       value: -1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startRotation.scalar
       value: 1.5707963
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 198676361311214770, guid: d4700ff77e809294c9390cbf7017262f,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: lengthInSec
       value: 0.25
       objectReference: {fileID: 0}
@@ -6160,6 +6083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 1098312537}
   audioVolume: 1
+  audioPitch: 1
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: 176e516fa9bfab34193a85087111c23c, type: 3}
@@ -6210,6 +6134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 0.9
   audioClip: {fileID: 0}
   clipSelection:
   - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
@@ -6391,11 +6316,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetSource: {fileID: 651158522}
   audioVolume: 1
+  audioPitch: 1.3
   audioClip: {fileID: 0}
   clipSelection:
-  - {fileID: 8300000, guid: 4bb381fe5f885024eb9d13d3763382a4, type: 3}
-  - {fileID: 8300000, guid: 83eef7cec18951341bea221c206b784a, type: 3}
-  - {fileID: 8300000, guid: 94ceb764e97d21e4a89723776c4238aa, type: 3}
+  - {fileID: 8300000, guid: f770ac43554364342abc1542188d1e69, type: 3}
+  - {fileID: 8300000, guid: 41dc09fd375becb49af5c747de701133, type: 3}
+  - {fileID: 8300000, guid: 8f873c8afdd277c4d9a754af08ae71a6, type: 3}
 --- !u!114 &1975038471 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114583154826297478, guid: 6395636dd39a5604c8840dbb3558d44d,

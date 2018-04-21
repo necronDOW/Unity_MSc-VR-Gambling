@@ -82,12 +82,10 @@ class FCD_RiggingSystem
         if (addedCards == null)
             return null;
 
-        for (int checkIndex = 0; indexer < addedCards.Length && checkIndex < probability.associatedCards.Length;)
-        {
+        for (int checkIndex = 0; indexer < addedCards.Length && checkIndex < probability.associatedCards.Length;) {
             int varience = probability.associatedCards[checkIndex].simplifiedValue - lastValue;
 
-            for (int j = 1; j < varience; j++)
-            {
+            for (int j = 1; j < varience; j++) {
                 addedCards[indexer++] = lastValue + j;
                 requiredCount--;
             }
@@ -220,7 +218,7 @@ class FCD_RiggingSystem
             tempAdded = tempAdded.OrderByDescending(x => x).ToArray();
             bool isStraight = true;
             for (int i = 1; i < tempAdded.Length; i++) {
-                if (tempAdded[i] - tempAdded[i-1] != 1) {
+                if (tempAdded[i-1] - tempAdded[i] != 1) {
                     isStraight = false;
                     break;
                 }
