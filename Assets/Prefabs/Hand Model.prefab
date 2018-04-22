@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 4957145994611426}
   - component: {fileID: 111062274553556620}
   - component: {fileID: 54209541553033306}
+  - component: {fileID: 114329814175891832}
   m_Layer: 0
   m_Name: Hand Model
   m_TagString: Untagged
@@ -866,15 +867,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815642941185970}
-  m_LocalRotation: {x: 0.38196597, y: 0.92214745, z: 0.023422228, w: 0.056546263}
-  m_LocalPosition: {x: 0.0341, y: 0.0084, z: -0.1997}
+  m_LocalRotation: {x: 0.59706634, y: 0.79180306, z: 0.11627533, w: -0.055134572}
+  m_LocalPosition: {x: 0.039, y: 0.001, z: -0.1877}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4847181605124050}
   - {fileID: 4256340841456498}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 172.98201, z: 45}
+  m_LocalEulerAnglesHint: {x: -14.476001, y: 176.949, z: 74.424}
 --- !u!4 &4957161466689898
 Transform:
   m_ObjectHideFlags: 1
@@ -971,6 +972,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGizmos: 1
+--- !u!114 &114329814175891832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815642941185970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5891b53008334cb43b170f8f59abb261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  callback:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!135 &135700369671538344
 SphereCollider:
   m_ObjectHideFlags: 1

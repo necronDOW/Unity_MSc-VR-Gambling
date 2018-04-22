@@ -13,7 +13,7 @@ public class MinigameMngr : MonoBehaviour
 
     public GameObject minigameInstancePrefab;
     [SerializeField] private float offsetOnLoad = 1000;
-    [SerializeField] private float brightnessModifier = 0.35f;
+    [SerializeField] private float brightnessModifier = 1.0f;
     public SceneNameFovPair[] sceneNameFovPairs;
 
     private BettingMachineBehaviour[] bettingMachines;

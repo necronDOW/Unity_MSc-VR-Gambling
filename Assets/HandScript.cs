@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandScript : SteamVR_TrackedController
 {
     //private const float animationFinishSpeed = 5.0f;
-    private const float defaultPlaySpeed = 4.0f;
+    private const float defaultPlaySpeed = 8.0f;
 
     [System.Serializable]
     public struct AnimationPausePair
@@ -27,13 +27,21 @@ public class HandScript : SteamVR_TrackedController
     {
         if (customModel != null) {
             customModel = Instantiate(customModel, transform);
+            customModel.GetComponent<OnInstantiated>().callback.AddListener(SetInitialPose);
 
             if (isLeftHand) {
+                // This makes no sense but it works.
                 customModel.transform.localScale *= -1;
-                customModel.transform.rotation = Quaternion.Euler(
-                    customModel.transform.eulerAngles.x,
-                    customModel.transform.eulerAngles.y - 180,
-                    customModel.transform.eulerAngles.z + 180);
+
+                customModel.transform.localPosition = new Vector3(
+                    customModel.transform.localPosition.x * -1, 
+                    customModel.transform.localPosition.y * -1, 
+                    customModel.transform.localPosition.z);
+                
+                customModel.transform.localRotation = Quaternion.Euler(
+                    customModel.transform.localEulerAngles.x - 180.0f, 
+                    customModel.transform.localEulerAngles.y + 5.0f, 
+                    customModel.transform.localEulerAngles.z);
             }
         }
 
@@ -41,10 +49,6 @@ public class HandScript : SteamVR_TrackedController
         if (animationComponent != null) {
             for (int i = 0; i < animationPausePairs.Length; i++) {
                 animationComponent.AddClip(animationPausePairs[i].clip, animationPausePairs[i].clip.name);
-            }
-
-            if (animationPausePairs.Length >= 1 && animationPausePairs[0].clip != null) {
-                PlayAnimation(0, 0.1f);
             }
 
             TriggerClicked      += HandleTriggerPress;
@@ -72,7 +76,7 @@ public class HandScript : SteamVR_TrackedController
     #region Hooks
     private void HandleTriggerPress(object sender, ClickedEventArgs e)
     {
-        if (!gripped) PlayAnimation(triggerAnimationIndex);
+        if (!gripped || triggerAndGrippedAnimationIndex == -1) PlayAnimation(triggerAnimationIndex);
         else PlayAnimation(triggerAndGrippedAnimationIndex);
     }
     
@@ -84,7 +88,7 @@ public class HandScript : SteamVR_TrackedController
 
     private void HandleTriggerRelease(object sender, ClickedEventArgs e)
     {
-        if (!gripped) PlayAnimation(0);
+        if (!gripped || triggerAndGrippedAnimationIndex == -1) PlayAnimation(0);
         else PlayAnimation(grippedAnimationIndex);
     }
 
@@ -99,6 +103,13 @@ public class HandScript : SteamVR_TrackedController
     {
         if (animationComponent != null && index >= 0 && index < animationPausePairs.Length && animationPausePairs[index].clip != null) {
             StartCoroutine(PlaySequence(animationPausePairs[index], delay));
+        }
+    }
+
+    void SetInitialPose()
+    {
+        if (animationPausePairs.Length > 0 && animationPausePairs[0].clip != null) {
+            PlayAnimation(0);
         }
     }
 
@@ -134,6 +145,7 @@ public class HandScript : SteamVR_TrackedController
         }
 
         SetAnimationSpeed(0.0f);
+        SetAnimationTime(animationPausePair.clip.name, animationPausePair.pauseAfterTime);
         yield return null;
     }
 
@@ -152,5 +164,13 @@ public class HandScript : SteamVR_TrackedController
         }
 
         return 1.0f;
+    }
+
+    private void SetAnimationTime(string name, float time)
+    {
+        foreach (AnimationState state in animationComponent) {
+            if (state.name == name)
+                state.time = time;
+        }
     }
 }
